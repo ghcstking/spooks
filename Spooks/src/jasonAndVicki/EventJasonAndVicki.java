@@ -1,5 +1,5 @@
 package jasonAndVicki;
 
-public interface EventJasonAndVicki {
+public class EventJasonAndVicki {
 
 }
