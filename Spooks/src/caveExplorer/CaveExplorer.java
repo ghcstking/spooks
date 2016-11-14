@@ -25,7 +25,7 @@ public class CaveExplorer {
 		inventory = new Inventory();
 		startExploring();
 	}
-	public static void startExploring() { //update
+	public static void startExploring() { 
 		while(true) {
 			System.out.print(inventory.getDescription());
 			System.out.println(currentRoom.getDescription());
