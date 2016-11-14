@@ -8,7 +8,7 @@ public class GameStartEvent implements Event {
 			"You cannot leave this floor until you have eluded the spooks."
 	};
 	public static final String[] SEQ_2 = {
-			"Great! Not like you have another choice anyway... unless your wish is death",
+			"Great! Not like you have another choice anyway... unless your wish is death...",
 			"Here's a map to help you navigate the floor."
 	};
 	public GameStartEvent() {
