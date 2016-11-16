@@ -35,7 +35,6 @@ public class EventEdwinAndAlex {
 			CaveExplorer.print("I mean... you have to say yes. Or die here.");
 		}
 		readSequence(START);
-		CaveExplorer.inventory.setMap(true);
 	}
 
 	public static void readSequence(String[] seq) {
