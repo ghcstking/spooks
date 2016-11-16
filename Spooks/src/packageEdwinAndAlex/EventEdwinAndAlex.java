@@ -1,5 +1,7 @@
 package packageEdwinAndAlex;
 
+import caveExplorer.CaveExplorer;
+
 public class EventEdwinAndAlex {
 
 	public boolean [][] board = new boolean [5][5];
@@ -20,10 +22,29 @@ public class EventEdwinAndAlex {
 			"will be severe.",
 			"You have forty turns to complete your assignment.",
 			"Make your choice."
-			
+	};
+	public static final String[]START = {
+			"Let the games begin."	
 	};
 	
 	
+	public void play() {
+		readSequence(INTRO);
+		CaveExplorer.print("Are you ready?");
+		while(CaveExplorer.in.nextLine().indexOf("yes") < 0) {
+			CaveExplorer.print("I mean... you have to say yes. Or die here.");
+		}
+		readSequence(START);
+		CaveExplorer.inventory.setMap(true);
+	}
+
+	public static void readSequence(String[] seq) {
+		for (int i = 0; i < seq.length; i++) {
+			CaveExplorer.print(seq[i]);
+			CaveExplorer.print(" - - - Press enter - - - ");
+			CaveExplorer.in.nextLine();
+		}
+	}
 	public EventEdwinAndAlex() {
 		// TODO Auto-generated constructor stub
 	}
