@@ -4,9 +4,9 @@ import caveExplorer.CaveExplorer;
 
 public class EventJasonAndVicki {
   
-				public boolean[][] field = new boolean[9][9];
+	public boolean[][] field = new boolean[9][9];
         public static final String[] SEQ = {
-          							"There's a loud BANG! and the doors shut on you... again...", 
+          		"There's a loud BANG! and the doors shut on you... again...", 
                         "The room is lined with shelves of skulls.",
                         "Not the mention the huge, very ugly, very angry skull statue amidst the shelves...",
                         "The bang caused another skull to roll off and BANG! It explodes.",
@@ -23,18 +23,18 @@ public class EventJasonAndVicki {
         public void play() {
                 readSequence(SEQ);
                 CaveExplorer.print("Are you ready?");
-		            while(CaveExplorer.in.nextLine().indexOf("yes") < 0) {
-			                  CaveExplorer.print("I mean... you have to say yes. Or die here.");
-		            }
+		while(CaveExplorer.in.nextLine().indexOf("yes") < 0) {
+			CaveExplorer.print("I mean... you have to say yes. Or die here.");
+		}
                 CaveExplorer.print("Let us begin.");
         }
   
         public static void readSequence(String[] seq) {
-		            for (int i = 0; i < seq.length; i++) {
-			                  CaveExplorer.print(seq[i]);
+		for (int i = 0; i < seq.length; i++) {
+			CaveExplorer.print(seq[i]);
                         CaveExplorer.print(" - - - Press enter - - - ");
                         CaveExplorer.in.nextLine();
                 }
-	      }
+	}
 }
 
