@@ -11,6 +11,7 @@ public class EventEdwinAndAlex {
 			"----------------BANG!-------------------",
 			"The doors have been slammed shut.",
 			"------------*Cue Saw Theme*------------",
+			"-----------Enter Asher----------",
 			"'I want to play a game with you.'",
 			"Before you are a series of lights, some turned off and some turned on.",
 			"The rules are simple: enter the coordinates of the switch you want to click.",
