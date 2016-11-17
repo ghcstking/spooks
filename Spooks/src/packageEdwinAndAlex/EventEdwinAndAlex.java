@@ -44,8 +44,61 @@ public class EventEdwinAndAlex {
 			CaveExplorer.in.nextLine();
 		}
 	}
+	public static void generateBoard(boolean [][] board){
+		for(int i = 0; i < 11; i ++){
+			int randRow = (int)Math.random()*board.length;
+			int randCol = (int)Math.random()*board[0].length;
+			
+			//while random light is turned off (true is off)
+			while(board[randRow][randCol]){
+				randRow = (int)Math.random()*board.length;
+				randCol = (int)Math.random()*board[0].length;
+			}
+			board[randRow][randCol] = !board[randRow][randCol];
+		}
+		
+	}
 	public EventEdwinAndAlex() {
-		// TODO Auto-generated constructor stub
+		play();
+		generateBoard(board);
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
