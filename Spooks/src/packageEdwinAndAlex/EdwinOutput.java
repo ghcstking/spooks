@@ -3,7 +3,7 @@ package packageEdwinAndAlex;
 public class EdwinOutput {
 
 	public EdwinOutput() {
-		// TODO Auto-generated constructor stub
+		// TODO Auto-generated constructor stubsdasd
 	}
 	public static void printBoard(String [][] boardImage,boolean [][] board){
 		for(int row = 0; row < board.length;row++){

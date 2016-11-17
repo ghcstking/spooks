@@ -39,6 +39,7 @@ public class EventEdwinAndAlex implements Event {
 		generateBoard(board);
 		System.out.println(board);
 		EdwinOutput.printBoard(boardImage,board);
+		//TODO FIX THIS SHIT
 	}
 
 	public static void readSequence(String[] seq) {
