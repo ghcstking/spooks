@@ -24,10 +24,10 @@ public class EventEdwinAndAlex implements Event {
 			"You have forty turns to complete your assignment.",
 			"Make your choice."
 	};
-	public static final String[]START = {
-			"Let the games begin."	
-	};
 	
+	public static final String []START = {
+			"Let the games begin."
+	};
 	
 	public void play() {
 		readSequence(INTRO);
@@ -36,6 +36,9 @@ public class EventEdwinAndAlex implements Event {
 			CaveExplorer.print("I mean... you have to say yes. Or die here.");
 		}
 		readSequence(START);
+		generateBoard(board);
+		System.out.println(board);
+		EdwinOutput.printBoard(boardImage,board);
 	}
 
 	public static void readSequence(String[] seq) {
@@ -61,7 +64,7 @@ public class EventEdwinAndAlex implements Event {
 	}
 	public EventEdwinAndAlex() {
 		play();
-		generateBoard(board);
+		
 	}
 
 	
