@@ -2,6 +2,9 @@ package caveExplorer;
 
 import java.util.Scanner;
 
+import jasonAndVicki.EventJasonAndVicki;
+import packageEdwinAndAlex.EventEdwinAndAlex;
+
 public class CaveExplorer {
 	public static CaveRoom[][] caves;
 	public static Scanner in;
@@ -17,6 +20,7 @@ public class CaveExplorer {
 			}
 		}
 		caves[0][2] = new EventRoom("This is the room where the old guy met you", new GameStartEvent());
+		caves[1][2] = new EventRoom("Lights out", new EventEdwinAndAlex());
 		currentRoom = caves[0][1];
 		currentRoom.enter();
 		caves[0][1].setConnection(CaveRoom.EAST, caves[0][2], new Door());

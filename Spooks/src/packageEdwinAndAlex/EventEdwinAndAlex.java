@@ -1,8 +1,9 @@
 package packageEdwinAndAlex;
 
 import caveExplorer.CaveExplorer;
+import caveExplorer.Event;
 
-public class EventEdwinAndAlex {
+public class EventEdwinAndAlex implements Event {
 
 	public boolean [][] board = new boolean [5][5];
 	public String[][] boardImage;
