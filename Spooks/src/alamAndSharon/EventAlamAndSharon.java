@@ -1,8 +1,9 @@
 package alamAndSharon;
 
 import caveExplorer.CaveExplorer;
+import caveExplorer.Event;
 
-public class EventAlamAndSharon {
+public class EventAlamAndSharon implements Event {
 
 	public boolean[][] maze = new boolean[10][10];
 	public static final String[] Begin = { "--Enter dramatic scene--" };
