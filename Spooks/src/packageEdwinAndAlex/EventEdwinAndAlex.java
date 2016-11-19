@@ -6,7 +6,8 @@ import caveExplorer.Event;
 public class EventEdwinAndAlex implements Event {
 
 	public boolean [][] board = new boolean [5][5];
-	public String[][] boardImage;
+	public String[][] boardImage = new String [(board.length*2)+1][(board[0].length)+1];
+	public String cheatCode = "spookyturkey";
 	
 	public static final String[]INTRO = {
 			"You enter a room with flickering lights.",
@@ -37,7 +38,6 @@ public class EventEdwinAndAlex implements Event {
 		}
 		readSequence(START);
 		generateBoard(board);
-		System.out.println(board);
 		EdwinOutput.printBoard(boardImage,board);
 		//TODO FIX THIS SHIT
 	}
