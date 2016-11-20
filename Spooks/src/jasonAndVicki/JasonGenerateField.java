@@ -3,7 +3,7 @@ package jasonAndVicki;
 public class JasonGenerateField {
 	public static String[][] mine;
 	public static boolean mine2[][];
-	private static String map;
+	public static String map;
 	
 	public static void generateField() {
 		mine = new String[9][9];
@@ -38,6 +38,11 @@ public class JasonGenerateField {
 		count+= validAndTrue(minefield, r+1, c);
 		count+= validAndTrue(minefield, r, c-1);
 		count+= validAndTrue(minefield, r, c+1);
+		count+= validAndTrue(minefield, r+1, c+1);
+		count+= validAndTrue(minefield, r-1, c-1);
+		count+= validAndTrue(minefield, r+1, c-1);
+		count+= validAndTrue(minefield, r-1, c+1);
+		
 		return count + "";
 	}
 	public static int validAndTrue(boolean[][] minefield, int i, int j) {
@@ -46,20 +51,40 @@ public class JasonGenerateField {
 		}
 		return 0;
 	}
-	public static void printMap() {
-		
+	public static void printField() {
+		map = " ";
+        for(int i = 0; i < mine[0].length - 1; i++){
+            map += "____";
+        }
+        map += "___\n";
+
+        for(int row = 0; row <mine.length; row++){
+            for(int row2 = 0; row2 < 2; row2++){
+                for(int col = 0; col < mine[row].length; col++){
+                    if(row2 == 1){
+                        map+="|___";
+                    } else{
+                    	map+="|   ";
+                    }
+                }
+                map += "|" + row + "\n";               
+            }
+        }
+        System.out.println(map);
+        System.out.println("  0   1   2   3   4   5   6   7   8");
 	}
 	public static void play() {
 		generateField();
 		createMines();
 		matchValues();
-		printMap();
+		printField();
 		for (int i = 0; i < mine.length; i++){ 
 			for (int j = 0; j < mine[0].length; j++) {
 				System.out.print(mine[i][j]);
 			}
 			System.out.println();
 		}
+		VickiCheckField.play();
 	}
 	
 }
