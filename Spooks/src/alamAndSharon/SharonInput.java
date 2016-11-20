@@ -18,7 +18,11 @@ public class SharonInput {
 	*/
 	
 	
-	//public static void 
+	//public static void placeGhost(){
+	
+
+
+//}
 	
 	
 	
