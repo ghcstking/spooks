@@ -50,6 +50,9 @@ public class EventAlamAndSharon implements Event {
 		startExploring();
 		*/
 	}
+	// ********* In this class, we will only generate the map. *********
+	//******The input class will take in the user input to move the person and update the map.********
+	
 /*
 	private static void printGrid(String[][] picArray) {
 		// TODO Auto-generated method stub
