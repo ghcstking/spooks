@@ -21,8 +21,7 @@ public class CaveExplorer {
 			}
 		}
 		caves[0][2] = new EventRoom("This is the room where the old guy met you", new GameStartEvent());
-		caves[1][2] = new EventRoom("This is the room where you were challenged by Asher", 
-				new EventEdwinAndAlex());
+		caves[1][2] = new EventRoom("This is the room where you were challenged by Asher", new EventEdwinAndAlex());
 		caves[2][2] = new EventRoom("You avoid joining the legion of skulls", new EventJasonAndVicki());
 //		caves[3][2] = new EventRoom("You've escaped", new EventAlamAndSharon());
 		currentRoom = caves[0][1];
@@ -31,10 +30,10 @@ public class CaveExplorer {
 		caves[0][2].setConnection(CaveRoom.SOUTH, caves[1][2], new Door());
 		caves[1][2].setConnection(CaveRoom.SOUTH, caves[2][2], new Door());
 		inventory = new Inventory();
-		startExploring();
+		startExploring(true);
 	}
-	public static void startExploring() { 
-		while(true) {
+	public static void startExploring(boolean var) { 
+		while(var) {
 			System.out.print(inventory.getDescription());
 			System.out.println(currentRoom.getDescription());
 			System.out.println("What would you like to do next?");

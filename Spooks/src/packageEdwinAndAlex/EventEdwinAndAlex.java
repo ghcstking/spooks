@@ -6,7 +6,6 @@ import caveExplorer.Event;
 public class EventEdwinAndAlex implements Event {
 
 	public boolean [][] board = new boolean [5][5];
-	public String[][] boardImage = new String [(board.length*2)+1][(board[0].length)+1];
 	public String cheatCode = "spookyturkey";
 	
 	public static final String[]INTRO = {
@@ -25,20 +24,17 @@ public class EventEdwinAndAlex implements Event {
 			"You have forty turns to complete your assignment.",
 			"Make your choice."
 	};
-	
-	public static final String []START = {
-			"Let the games begin."
-	};
-	
 	public void play() {
 		readSequence(INTRO);
 		CaveExplorer.print("Are you ready?");
 		while(CaveExplorer.in.nextLine().indexOf("yes") < 0) {
 			CaveExplorer.print("I mean... you have to say yes. Or die here.");
 		}
-		readSequence(START);
+		CaveExplorer.print("Let the games begin.");
+		CaveExplorer.inventory.setMap(false);
+		CaveExplorer.startExploring(false);
 		generateBoard(board);
-		EdwinOutput.printBoard(boardImage,board);
+		printBoard(board);
 		//TODO FIX THIS SHIT
 	}
 
@@ -61,12 +57,42 @@ public class EventEdwinAndAlex implements Event {
 			}
 			board[randRow][randCol] = !board[randRow][randCol];
 		}
-		
+	//testing	dasda
 	}
-	public EventEdwinAndAlex() {
-		play();
-		
+	public void printBoard(boolean [][] board){
+		String boardImage = " ";
+		for(int i = 0; i < board[0].length-1;i++){
+			boardImage+="____";
+		}
+		boardImage+="___\n";
+		for(boolean[] row : board ){
+			for(int i = 0; i < 3; i++){
+				String text = "";
+				for(boolean light: row){
+					text+="|";
+					if(i == 0){
+						text+="   ";
+					}
+					else if (i == 1){
+						if(light){
+							text+="+";
+						}
+						else{
+							text+="-";
+						}
+
+					}
+					else if (i == 2){
+						text+= "___";
+					}
+				}
+				text+="|";
+				boardImage+=text+"\n";
+			}
+		}
+		CaveExplorer.print(boardImage);
 	}
+
 
 	
 	
