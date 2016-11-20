@@ -10,13 +10,20 @@ public class EventAlamAndSharon implements Event {
 
 	public boolean[][] maze = new boolean[10][10];
 	public static final String[] Begin = { "--Enter dramatic scene--" };
+	public static final String[] Win = {"Horrayyy!!You have escaped alive!!"};
+	public static final String[] Lost = {"Game Over. You've been found."};
 	public static Scanner in;
-
+	/*
 	public static String[][]arr2D;
 	public static String[][]pic;
 	
 	public static int i;
 	public static int j;
+	*/
+	
+	//Both ghost and player need a map to compare locations.
+	public static String[][] playerMap= new String[10][10];
+	public static String[][] ghostMap= new String[10][10];
 	
 	public void play() {
 		
