@@ -31,10 +31,10 @@ public class CaveExplorer {
 		caves[0][2].setConnection(CaveRoom.SOUTH, caves[1][2], new Door());
 		caves[1][2].setConnection(CaveRoom.SOUTH, caves[2][2], new Door());
 		inventory = new Inventory();
-		startExploring();
+		startExploring(true);
 	}
-	public static void startExploring() { 
-		while(true) {
+	public static void startExploring(boolean var) { 
+		while(var) {
 			System.out.print(inventory.getDescription());
 			System.out.println(currentRoom.getDescription());
 			System.out.println("What would you like to do next?");
