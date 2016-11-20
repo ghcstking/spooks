@@ -1,19 +1,23 @@
 package alamAndSharon;
 
 import caveExplorer.CaveExplorer;
+import java.util.Scanner;
 
 public class SharonInput {
 	
-	/*
-	 * In the main event class(EventAlamAndSharon), the function for generating map
-	 * is made. In this function, it is called.
-	 * 
-	private static void printGameMap() {
-		EventAlamAndSharon.;
-	}
+	public static Scanner in = new Scanner(System.in);
+	public static String txtInput;
+	public static int inputInt;
 	
-	*/
-	public void interpretInput(String input) {
+	public static void play(){
+		
+		CaveExplorer.print("Where would you like to go?.");
+		
+		String response=in.nextLine();
+		interpretInput(response);
+		
+	}
+	public static void interpretInput(String input) {
 		while(!isValid(input)){
 			System.out.println("You can only enter " + "'w','a','s', or 'd'");
 			input = CaveExplorer.in.nextLine();
@@ -31,12 +35,15 @@ public class SharonInput {
 		goToRoom(indexFound);
 	}
 
-	public void goToRoom(int direction) {
+	
+	//move player to room given direction.
+	public static void goToRoom(int direction) {
 		
 	}
 	
 	
-	private boolean isValid(String input) {
+	
+	private static boolean isValid(String input) {
 		String[] keys = {"w", "a", "s", "d"};
 		for (String key: keys) {
 			if (input.equals(key)) {
@@ -45,6 +52,21 @@ public class SharonInput {
 		}
 		return false;
 	}
+	/*
+	public static void printPic(String[][] pic){
+			for(int y = 0; y < pic.length; y++){
+				for(int x = 0; x < pic[y].length; x++){
+					if(y == i && x ==j){
+						pic[y][x] = "X";
+					}else{
+						pic[y][x] = " ";						
+					}
+					System.out.print(pic[y][x]);
+				}
+				System.out.println();
+			}
+		}
+	 */
 
 	
 }
