@@ -33,7 +33,13 @@ public class EventAlamAndSharon implements Event {
 		CaveExplorer.print(" - - - Press enter - - - ");
 		CaveExplorer.in.nextLine();
 		CaveExplorer.print("SURIVE!");
-		
+		CaveExplorer.inventory.setMap(false);
+        CaveExplorer.startExploring(false);
+		//printGrid();
+        SharonInput.play();
+        //Input class: ask player where they want to move & check input
+        //create ghosts moving in random direction and place on map
+        
 	}
 	// ********* In this class, we will only generate the map. *********
 	//******The input class will take in the user input to move the person and update the map.********
