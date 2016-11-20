@@ -1,8 +1,5 @@
 package jasonAndVicki;
 
-import caveExplorer.CaveExplorer;
-import caveExplorer.CaveRoom;
-
 public class JasonGenerateField {
 	public static String[][] mine;
 	public static boolean mine2[][];
@@ -49,38 +46,14 @@ public class JasonGenerateField {
 		}
 		return 0;
 	}
-	public static String printMap() {
-		map = "  ";
-		for(int i = 0; i < mine[0].length - 1; i++){
-			map += "____";
-		}
-		map += "___\n";
-		for(String[] row: mine){
-			for(int i = 0; i < 3; i++){
-				String text = " ";
-				for(String cr: row){
-					text += "|";
-					if(i == 0){
-						text += "   "; // 3 spaces
-					}else if(i == 1){
-						text += " X ";
-					}
-					else {
-						text += "   ";
-					}
-					text += "___";
-				}
-				text += "|";
-				map += text + "\n";
-			}
-		}
-		return map;
+	public static void printMap() {
+		
 	}
 	public static void play() {
 		generateField();
 		createMines();
 		matchValues();
-//		printPic();
+		printMap();
 		for (int i = 0; i < mine.length; i++){ 
 			for (int j = 0; j < mine[0].length; j++) {
 				System.out.print(mine[i][j]);
