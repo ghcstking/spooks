@@ -1,11 +1,8 @@
 package alamAndSharon;
 
+import caveExplorer.CaveExplorer;
+
 public class SharonInput {
-	private static int row; 
-	private static int col; 
-	private static String input;
-	private static int dir;
-	private static boolean[]dirAvailable;
 	
 	/*
 	 * In the main event class(EventAlamAndSharon), the function for generating map
@@ -16,19 +13,39 @@ public class SharonInput {
 	}
 	
 	*/
-	
-	
-	//public static void placeGhost(){
-	
+	public void interpretInput(String input) {
+		while(!isValid(input)){
+			System.out.println("You can only enter " + "'w','a','s', or 'd'");
+			input = CaveExplorer.in.nextLine();
+		}
+		
+		String[] keys = {"w","d","s","a"};
+		int indexFound = -1;
+		
+		for(int i = 0; i < keys.length; i++){
+			if(input.equals(keys[i])){
+				indexFound = i;
+				break;
+			}
+		}
+		goToRoom(indexFound);
+	}
 
+	public void goToRoom(int direction) {
+		
+	}
+	
+	
+	private boolean isValid(String input) {
+		String[] keys = {"w", "a", "s", "d"};
+		for (String key: keys) {
+			if (input.equals(key)) {
+				return true;
+			}
+		}
+		return false;
+	}
 
-//}
-	
-	
-	
-	
-	
-	
 	
 }
 
