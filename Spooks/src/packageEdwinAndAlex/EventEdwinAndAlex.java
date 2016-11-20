@@ -61,7 +61,7 @@ public class EventEdwinAndAlex implements Event {
 			}
 			board[randRow][randCol] = !board[randRow][randCol];
 		}
-	//testing	
+	//testing	dasda
 	}
 	public EventEdwinAndAlex() {
 		play();
