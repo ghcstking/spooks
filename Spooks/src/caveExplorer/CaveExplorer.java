@@ -23,7 +23,7 @@ public class CaveExplorer {
 		caves[0][2] = new EventRoom("This is the room where the old guy met you", new GameStartEvent());
 		caves[1][2] = new EventRoom("This is the room where you were challenged by Asher", new EventEdwinAndAlex());
 		caves[2][2] = new EventRoom("You avoid joining the legion of skulls", new EventJasonAndVicki());
-//		caves[3][2] = new EventRoom("You've escaped", new EventAlamAndSharon());
+		caves[3][2] = new EventRoom("You've escaped", new EventAlamAndSharon());
 		currentRoom = caves[0][1];
 		currentRoom.enter();
 		caves[0][1].setConnection(CaveRoom.EAST, caves[0][2], new Door());
