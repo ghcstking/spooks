@@ -4,10 +4,10 @@ import caveExplorer.CaveExplorer;
 
 public class AlamAI extends EventAlamAndSharon{
 	
-	private static boolean ghost1 = true;
-	private static boolean ghost2 = true;
-	private static boolean ghost3 = true;
-	private static boolean ghost4 = true;
+	public static boolean ghost1 = true;
+	public static boolean ghost2 = true;
+	public static boolean ghost3 = false;
+	public static boolean ghost4 = true;
 	
 	private static boolean ghostArray[] = {ghost1,ghost2,ghost3,ghost4};
 	
@@ -76,9 +76,12 @@ public class AlamAI extends EventAlamAndSharon{
 					else if(move.equals("s") && locationCol4 < ghostMap.length-1 && ghostMap[locationCol4 + 1][locationRow4] == null) locationCol4++;
 					else if(move.equals("d") && locationRow4 < ghostMap[locationCol4].length-1 && ghostMap[locationCol4][locationRow4 + 1] == null) locationRow4++;
 					ghostMap[locationCol4][locationRow4] = "4";
+					
 				}
 			}
 		}
 	}
+	
+	
 	
 }
