@@ -8,6 +8,9 @@ public class AlamAI extends EventAlamAndSharon{
 	private static boolean ghost2 = true;
 	private static boolean ghost3 = true;
 	private static boolean ghost4 = true;
+	
+	private static boolean ghostArray[] = {ghost1,ghost2,ghost3,ghost4};
+	
 	public static int locationCol1 = 1;
 	public static int locationRow1 = 1;
 	public static int locationCol2 = 8;
@@ -16,7 +19,8 @@ public class AlamAI extends EventAlamAndSharon{
 	public static int locationRow3 = 8;
 	public static int locationCol4 = 8;
 	public static int locationRow4 = 1;
-	private static boolean ghostArray[] = {ghost1,ghost2,ghost3,ghost4};
+	
+	
 	public static void begin(){
 		if(ghost1){
 			ghostMap[locationCol1][locationRow1] = "1";
