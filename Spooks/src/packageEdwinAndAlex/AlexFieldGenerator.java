@@ -70,5 +70,9 @@ public class AlexFieldGenerator {
 		}
 		CaveExplorer.print(boardImage);
 	}
+	
+	public static boolean cheatCodeEntered(String input){
+		return(input.equals(EventEdwinAndAlex.cheatCode));
+	}
 
 }

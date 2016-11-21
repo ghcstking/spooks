@@ -6,7 +6,7 @@ import caveExplorer.Event;
 public class EventEdwinAndAlex implements Event {
 
 	public boolean [][] board = new boolean [5][5];
-	public String cheatCode = "spookyturkey";
+	public static String cheatCode = "spookyturkey";
 	
 	public static final String[]INTRO = {
 			"You enter a room with flickering lights.",
