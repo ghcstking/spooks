@@ -90,7 +90,7 @@ public class VickiCheckField {
 				else{
 					if(r > 1 && c > 1 && r % 2 == 0 && c % 2 == 0){
 						mineMap[r+3][c+1] = "" + surroundMineCount;
-					}
+					}s
 					else{
 						mineMap[r+1][c+1] = "" + surroundMineCount;
 					}
