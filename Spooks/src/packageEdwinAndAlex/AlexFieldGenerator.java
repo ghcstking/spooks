@@ -4,14 +4,13 @@ import caveExplorer.CaveExplorer;
 
 public class AlexFieldGenerator {
 
-	public AlexFieldGenerator() {
-		// TODO Auto-generated constructor stub
-	}
-	
-	public static void startGame(boolean [][] board){
+	public static boolean [][] board = new boolean [5][5];
+	public static String cheatCode = "spookyturkey";
+
+	public static void startGame(){
 		int turnsLeft = 40;
-		generateBoard(board);
-		printBoard(board);
+		generateBoard();
+		printBoard();
 		CaveExplorer.print("Turns left: "+turnsLeft);
 		while(turnsLeft>0){
 			CaveExplorer.print("Enter row coordinate.");
@@ -22,46 +21,45 @@ public class AlexFieldGenerator {
 		}
 	}
 
-	private static void generateBoard(boolean [][] board){
-		for(int i = 0; i < 11; i ++){
-			int randRow = (int)Math.random()*board.length;
-			int randCol = (int)Math.random()*board[0].length;
+	private static void generateBoard(){
+		int lightsToTurnOff = 12;
+		while(lightsToTurnOff>0){
+			int randRow = (int)(Math.random()*board.length);
+			int randCol = (int)(Math.random()*board[0].length);
 			
-			//while random light is turned off (true is off)
 			while(board[randRow][randCol]){
-				randRow = (int)Math.random()*board.length;
-				randCol = (int)Math.random()*board[0].length;
+				randRow = (int)(Math.random()*board.length);
+				randCol = (int)(Math.random()*board[0].length);
 			}
 			board[randRow][randCol] = !board[randRow][randCol];
+			lightsToTurnOff--;
 		}
-	//testing	dasda
 	}
-	
-	private static void printBoard(boolean [][] board){
+	ss
+	private static void printBoard(){
 		String boardImage = " ";
 		for(int i = 0; i < board[0].length-1;i++){
 			boardImage+="____";
 		}
 		boardImage+="___\n";
 		for(boolean[] row : board ){
-			for(int i = 0; i < 3; i++){
+			for(int i = 0; i < 3; i ++){
 				String text = "";
-				for(boolean light: row){
-					text+="|";
+				for(boolean lightOff : row){
+					text += "|";
 					if(i == 0){
 						text+="   ";
 					}
 					else if (i == 1){
-						if(light){
-							text+="+";
+						if(lightOff){
+							text+=" - ";
 						}
 						else{
-							text+="-";
+							text+=" + ";
 						}
-
 					}
 					else if (i == 2){
-						text+= "___";
+						text+="___";
 					}
 				}
 				text+="|";
@@ -69,6 +67,10 @@ public class AlexFieldGenerator {
 			}
 		}
 		CaveExplorer.print(boardImage);
+	}
+	
+	public static boolean cheatCodeEntered(String input){
+		return(input.equals(cheatCode));
 	}
 
 }

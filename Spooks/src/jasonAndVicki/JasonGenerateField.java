@@ -2,13 +2,18 @@ package jasonAndVicki;
 
 public class JasonGenerateField {
 	public static String[][] mine;
+	// ACTUAL
 	public static boolean mine2[][];
+	// BOOLEAN ARRAY
 	public static String map;
+	public static String[][] mine3;
+	// FAKE
 	
 	
 	public static void generateField() {
 		mine = new String[9][9];
 		mine2 = new boolean[9][9];
+		mine3 = new String[9][9];
 	}
 	public static void createMines() {
 		int num = 10;
@@ -20,7 +25,21 @@ public class JasonGenerateField {
 				num--;
 			}
 		}
+		fakeMap();
 	}
+
+	public static void fakeMap() {
+		for (int row = 0; row < mine3.length; row++) {
+			for (int col = 0; col < mine3[row].length; col++) {
+				mine3[row][col] = " ";
+			}
+		}
+	}
+	
+	public static String getContents(String[][] arr, int r, int c) {
+		return arr[r][c];
+	}
+	
 	public static void matchValues() {
 		for (int row = 0; row < mine.length; row++) {
 			for (int col = 0; col < mine[0].length; col++) {
@@ -55,15 +74,15 @@ public class JasonGenerateField {
 	public static void printField() {
 		map = " ";
         for(int i = 0; i < mine[0].length - 1; i++){
-            map += "____";
+            map += "___";
         }
         map += "___\n";
 
         for(int row = 0; row <mine.length; row++){
-            for(int row2 = 0; row2 < 2; row2++){
+            for(int row2 = 0; row2 < 1; row2++){
                 for(int col = 0; col < mine[row].length; col++){
-                    if(row2 == 1){
-                        map+="|___";
+                    if(row2 == 0){
+                        map+="| " + getContents(mine3, row, col);
                     } else{
                     	map+="|   ";
                     }
@@ -72,7 +91,7 @@ public class JasonGenerateField {
             }
         }
         System.out.println(map);
-        System.out.println("  0   1   2   3   4   5   6   7   8");
+        System.out.println(" 0  1  2  3  4  5  6  7  8");
 	}
 	public static void play() {
 		generateField();

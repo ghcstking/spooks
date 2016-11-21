@@ -3,11 +3,14 @@ package alamAndSharon;
 import caveExplorer.CaveExplorer;
 import java.util.Scanner;
 
-public class SharonInput {
+public class SharonInput{
 	
 	public static Scanner in = new Scanner(System.in);
 	public static String txtInput;
 	public static int inputInt;
+	
+	public static int playerCol = 5;
+	public static int playerRow = 5;
 	
 	public static void play(){
 		
@@ -32,6 +35,7 @@ public class SharonInput {
 				break;
 			}
 		}
+		AlamAI.moveDaGhost();
 		goToRoom(indexFound);
 	}
 
@@ -39,10 +43,22 @@ public class SharonInput {
 	//move player to room given direction.
 	public static void goToRoom(int direction) {
 		
+		if(isRoomFull()){
+			
+		}
 	}
-	
-	
-	
+
+
+
+	private static boolean isRoomFull() {
+		if(AlamAI.ghost1){
+			if(AlamAI.locationCol1 == playerCol && AlamAI.locationRow1 == playerRow){
+				return true;
+			}
+		}
+		
+		return false;
+	}
 	private static boolean isValid(String input) {
 		String[] keys = {"w", "a", "s", "d"};
 		for (String key: keys) {
