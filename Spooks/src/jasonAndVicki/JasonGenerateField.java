@@ -5,6 +5,7 @@ public class JasonGenerateField {
 	public static boolean mine2[][];
 	public static String map;
 	
+	
 	public static void generateField() {
 		mine = new String[9][9];
 		mine2 = new boolean[9][9];
