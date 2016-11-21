@@ -6,7 +6,7 @@ import caveExplorer.Event;
 public class EventEdwinAndAlex implements Event {
 
 	public boolean [][] board = new boolean [5][5];
-	public String[][] boardImage;
+	public String cheatCode = "spookyturkey";
 	
 	public static final String[]INTRO = {
 			"You enter a room with flickering lights.",
@@ -24,18 +24,17 @@ public class EventEdwinAndAlex implements Event {
 			"You have forty turns to complete your assignment.",
 			"Make your choice."
 	};
-	public static final String[]START = {
-			"Let the games begin."	
-	};
-	
-	
 	public void play() {
 		readSequence(INTRO);
 		CaveExplorer.print("Are you ready?");
 		while(CaveExplorer.in.nextLine().indexOf("yes") < 0) {
 			CaveExplorer.print("I mean... you have to say yes. Or die here.");
 		}
-		readSequence(START);
+		CaveExplorer.print("Let the games begin.");
+		CaveExplorer.inventory.setMap(false);
+		CaveExplorer.startExploring(false);
+		AlexFieldGenerator.startGame(board);
+		//TODO FIX THIS SHIT
 	}
 
 	public static void readSequence(String[] seq) {
@@ -45,8 +44,46 @@ public class EventEdwinAndAlex implements Event {
 			CaveExplorer.in.nextLine();
 		}
 	}
-	public EventEdwinAndAlex() {
-		// TODO Auto-generated constructor stub
-	}
+	
+	
 
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
