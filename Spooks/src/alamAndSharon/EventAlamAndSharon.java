@@ -36,6 +36,7 @@ public class EventAlamAndSharon implements Event {
 		CaveExplorer.inventory.setMap(false);
         CaveExplorer.startExploring(false);
 		//printGrid();
+        AlamAI.begin();
         SharonInput.play();
         //Input class: ask player where they want to move & check input
         //create ghosts moving in random direction and place on map
@@ -118,6 +119,9 @@ public class EventAlamAndSharon implements Event {
 			CaveExplorer.print(" - - - Press enter - - - ");
 			CaveExplorer.in.nextLine();
 		}
+	}
+	public static void moveGhost(){
+		 AlamAI.moveDaGhost();
 	}
 }
 

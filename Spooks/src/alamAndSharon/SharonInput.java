@@ -3,7 +3,7 @@ package alamAndSharon;
 import caveExplorer.CaveExplorer;
 import java.util.Scanner;
 
-public class SharonInput {
+public class SharonInput{
 	
 	public static Scanner in = new Scanner(System.in);
 	public static String txtInput;
@@ -32,6 +32,7 @@ public class SharonInput {
 				break;
 			}
 		}
+		AlamAI.moveDaGhost();
 		goToRoom(indexFound);
 	}
 
