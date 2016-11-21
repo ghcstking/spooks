@@ -7,7 +7,7 @@ public class EdwinWinConditions {
 	public EdwinWinConditions() {
 		// TODO Auto-generated constructor stubsdasd
 	}
-	
+
 	public static boolean isCleared(boolean [][] board){
 		for(boolean [] row: board){
 			for(boolean light:row){
@@ -18,15 +18,30 @@ public class EdwinWinConditions {
 		}
 		return true;
 	}
-	
+
 	public static void changeBoard(boolean [][] board,String rowCord,String colCord){
-		int r = Integer.parseInt(rowCord);
-		int c = Integer.parseInt(colCord);
-		if(isValidPoint(r,c,board)){
-			changeLights(r,c,board);
+		if(cheatCodeEntered(rowCord)||(cheatCodeEntered(colCord))){
+
 		}
+		else{
+			int r = Integer.parseInt(rowCord);
+			int c = Integer.parseInt(colCord);
+			if(isValidPoint(r,c,board)){
+				changeLights(r,c,board);
+			}
+			else{
+				CaveExplorer.print("Are you braindead? Theres no lightbulb at that point.");
+			}
+		}
+
 	}
-	
+
+	private static void changeLights(int r, int c, boolean[][] board) {
+		// TODO Auto-generated method stub
+
+
+	}
+
 	private static boolean isValidPoint(int rowCord, int colCord, boolean [][] board){
 		boolean validRow = false;
 		boolean validCol = false;
@@ -37,5 +52,9 @@ public class EdwinWinConditions {
 			if(colCord==c)validCol=true;
 		}
 		return (validRow&&validCol);
+	}
+
+	private static boolean cheatCodeEntered(String input){
+		return(input.equals(AlexFieldGenerator.cheatCode));
 	}
 }

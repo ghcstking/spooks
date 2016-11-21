@@ -17,7 +17,8 @@ public class AlexFieldGenerator {
 			String rowCord = CaveExplorer.in.nextLine();
 			CaveExplorer.print("Enter column coordinate.");
 			String colCord = CaveExplorer.in.nextLine();
-		
+			EdwinWinConditions.changeBoard(board,rowCord,colCord);
+
 		}
 	}
 
@@ -26,7 +27,7 @@ public class AlexFieldGenerator {
 		while(lightsToTurnOff>0){
 			int randRow = (int)(Math.random()*board.length);
 			int randCol = (int)(Math.random()*board[0].length);
-			
+
 			while(board[randRow][randCol]){
 				randRow = (int)(Math.random()*board.length);
 				randCol = (int)(Math.random()*board[0].length);
@@ -66,10 +67,6 @@ public class AlexFieldGenerator {
 			}
 		}
 		CaveExplorer.print(boardImage);
-	}
-	
-	public static boolean cheatCodeEntered(String input){
-		return(input.equals(cheatCode));
 	}
 
 }
