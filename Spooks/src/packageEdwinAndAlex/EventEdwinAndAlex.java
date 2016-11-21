@@ -4,9 +4,6 @@ import caveExplorer.CaveExplorer;
 import caveExplorer.Event;
 
 public class EventEdwinAndAlex implements Event {
-
-	public boolean [][] board = new boolean [5][5];
-	public static String cheatCode = "spookyturkey";
 	
 	public static final String[]INTRO = {
 			"You enter a room with flickering lights.",
@@ -33,7 +30,7 @@ public class EventEdwinAndAlex implements Event {
 		CaveExplorer.print("Let the games begin.");
 		CaveExplorer.inventory.setMap(false);
 		CaveExplorer.startExploring(false);
-		AlexFieldGenerator.startGame(board);
+		AlexFieldGenerator.startGame();
 		//TODO FIX THIS SHIT
 	}
 
