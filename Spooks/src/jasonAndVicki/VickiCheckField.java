@@ -33,17 +33,17 @@ public class VickiCheckField {
 				System.out.println("yasss");
 			}
 			else {
-				updateMap(r, c);
+				updateMap(row, col);
 			}
 		}
 		else {
-			print("Please enter a valid input");
 			converse();
 		}
 	}
 	
-	public static void updateMap(String row, String col) {
-		
+	public static void updateMap(int r, int c) {
+		JasonGenerateField.mine3[r][c] = JasonGenerateField.mine[r][c];
+		JasonGenerateField.printField();
 	}
 	
 	public static void printFinalField() {
