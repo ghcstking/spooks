@@ -35,7 +35,6 @@ public class AlexFieldGenerator {
 			lightsToTurnOff--;
 		}
 	}
-	ss
 	private static void printBoard(){
 		String boardImage = " ";
 		for(int i = 0; i < board[0].length-1;i++){
@@ -55,7 +54,7 @@ public class AlexFieldGenerator {
 							text+=" - ";
 						}
 						else{
-							text+=" + ";
+							text+=" O ";
 						}
 					}
 					else if (i == 2){
