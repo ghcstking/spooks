@@ -32,6 +32,7 @@ public class SharonInput{
 		moveThePlayer(input);
 		AlamAI.moveDaGhost();
 		playerCheckRoom(playerRow,playerCol);
+		checkGhostProximity();
 	}
 
 	
@@ -97,6 +98,49 @@ public class SharonInput{
 		
 			return false;
 	}
+	public static void checkGhostProximity(){
+		if(AlamAI.ghost1){
+			if(AlamAI.locationCol1 == playerCol+1 || AlamAI.locationCol1== playerCol-1){//check if ghost is left or right of player coordinate
+				System.out.println("Careful... Be cautious of what may be standing right beside you. ");
+			}
+		}
+		if(AlamAI.ghost1){
+			if(AlamAI.locationRow1 == playerRow+1 || AlamAI.locationRow1== playerRow-1){//check if ghost is above or below player coordinate
+				System.out.println("You hear a screech above you and the floor rumbles. ");
+			}
+		}
+		if(AlamAI.ghost2){
+			if(AlamAI.locationCol2 == playerCol+1 || AlamAI.locationCol2== playerCol-1){
+				System.out.println("Careful... Be cautious of what may be standing right beside you. ");
+			}
+		}
+		if(AlamAI.ghost2){
+			if(AlamAI.locationRow2 == playerRow+1 || AlamAI.locationRow2== playerRow-1){
+				System.out.println("You hear a screech above you and the floor rumbles. ");
+			}
+		}
+		if(AlamAI.ghost3){
+			if(AlamAI.locationCol3 == playerCol+1 || AlamAI.locationCol3== playerCol-1){
+				System.out.println("Careful... Be cautious of what may be standing right beside you. ");
+			}
+		}
+		if(AlamAI.ghost3){
+			if(AlamAI.locationRow3 == playerRow+1 || AlamAI.locationRow3== playerRow-1){
+				System.out.println("You hear a screech above you and the floor rumbles. ");
+			}
+		}
+		if(AlamAI.ghost4){
+			if(AlamAI.locationCol4 == playerCol+1 || AlamAI.locationCol4== playerCol-1){
+				System.out.println("Careful... Be cautious of what may be standing right beside you. ");
+			}
+		}
+		if(AlamAI.ghost4){
+			if(AlamAI.locationRow4 == playerRow+1 || AlamAI.locationRow4== playerRow-1){
+				System.out.println("You hear a screech above you and the floor rumbles. ");
+			}
+		}
+	}
+	
 	private static boolean isValid(String input) {
 		//check to see if valid direction
 		String[] keys = {"w", "a", "s", "d"};
