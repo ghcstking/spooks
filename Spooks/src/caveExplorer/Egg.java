@@ -46,7 +46,7 @@ public class Egg implements Event {
              CaveExplorer.print("- - - - - - - You Died. - - - - - - -");
          }
          else{
-        	 CaveExplorer.print("Your gut tells you to leave the egg alone.\n You place it back where you found it.");
+        	 CaveExplorer.print("Your gut tells you to leave the egg alone.\n Ysou place it back where you found it.");
          }
          
 	}

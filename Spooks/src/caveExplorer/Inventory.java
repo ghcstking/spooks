@@ -21,7 +21,7 @@ public class Inventory {
 		}
 		
 		map += "___\n";//3 underscores
-		
+		s
 		for(CaveRoom[] row: CaveExplorer.caves){
 			
 			for(int i = 0; i < 3; i++){
