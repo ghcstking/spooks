@@ -1,5 +1,7 @@
 package caveExplorer;
 
+import java.util.Arrays;
+
 public class CaveRoom {
 	
 	private String description;
@@ -115,6 +117,7 @@ public class CaveRoom {
 	}
 
 	public void interpretInput(String input) {
+		System.out.println(Arrays.toString(doors));
 		while(!isValid(input)){
 			System.out.println("You can only enter " + "'w','a','s', or 'd'");
 			input = CaveExplorer.in.nextLine();
@@ -129,16 +132,23 @@ public class CaveRoom {
 				break;
 			}
 		}
+//		if(doors[indexFound].isLocked() == false){
+//			goToRoom(indexFound);
+//		}
+//		else{
+//			CaveExplorer.print("Key pls");
+//		}
+		
 		goToRoom(indexFound);
 	}
 
 	public void goToRoom(int direction) {
-		if(borderingRooms[direction] != null && doors[direction].isOpen()){
-			CaveExplorer.currentRoom.leave();
-			CaveExplorer.currentRoom = borderingRooms[direction];
-			CaveExplorer.currentRoom.enter();
-			CaveExplorer.inventory.updateMap();
-		}
+		CaveExplorer.currentRoom.doors[direction].setOpen(true);
+		CaveExplorer.currentRoom.leave();
+		CaveExplorer.currentRoom = borderingRooms[direction];
+		CaveExplorer.currentRoom.enter();
+		CaveExplorer.inventory.updateMap();
+	
 	}
 	private boolean isValid(String input) {
 		String[] keys = {"w", "a", "s", "d"};
