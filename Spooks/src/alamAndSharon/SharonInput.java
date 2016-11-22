@@ -80,8 +80,8 @@ public class SharonInput extends EventAlamAndSharon{
 		Items.checkForItem();
 		if(isRoomFull()){
 			//checks to see if you have a cloak
-			if(Items.invisibilityCloak < 0){
-				System.out.println("A loud bang canbe heard behind you, you quickly put on your invisibility cloak and stand still.");
+			if(Items.invisibilityCloak > 0){
+				System.out.println("A loud bang can be heard behind you, you quickly put on your invisibility cloak and stand still.");
 				System.out.println("A blonde man with very small hands walks by you, mumbling something about the game being rigged");
 				System.out.println("You have lost a cloak");
 				Items.invisibilityCloak --;

@@ -6,7 +6,7 @@ import caveExplorer.CaveExplorer;
 // Code by Alam
 public class Items extends EventAlamAndSharon{
 	//checks to see how many turns are available
-	public static int turns = 10;
+	public static int turns = 50;
 	
 	//items player can have
 	public static int invisibilityCloak = 0;
@@ -106,10 +106,10 @@ public class Items extends EventAlamAndSharon{
 			turns = 0;
 			System.out.println("Your game will end next turn ... \n hopefully a ghost hits you >:( \n cheater");
 		}else if(cheat == 2){
-			invisibilityCloak = 10;
+			invisibilityCloak += 10;
 			System.out.println("You gave yourself invisibliity cloaks");
 		}else if(cheat == 3){
-			flashlight = 10;
+			flashlight += 10;
 			System.out.println("You gave yourself flashlight");
 		}else if(cheat == 4){
 			cheatMap = true;
@@ -118,8 +118,8 @@ public class Items extends EventAlamAndSharon{
 	}
 	
 	public static void cheatMap(String[][] pic){
-		for(int y = 0; y < pic.length; y++){
-			for(int x = pic[y].length; x >0 ; x--){
+		for(int y = pic.length-1; y > 0; y--){
+			for(int x = 0; x < pic[y].length; x++){
 				if(y == SharonInput.playerRow && x == SharonInput.playerCol){
 					pic[y][x] = "|X|";
 				}else if((AlamAI.ghost1 && (y == AlamAI.locationRow1 && x == AlamAI.locationCol1)) ||
