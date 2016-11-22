@@ -5,7 +5,10 @@ import java.util.Scanner;
 import caveExplorer.CaveExplorer;
 
 public class VickiCheckField {
-	
+	/* TO LOWER CASE
+	 * UNFLAG
+	 * TRY TO MAKE ALL THE ADJACENT NUMBERS SHOW UP WHY ARENT U WORKING
+	 */
 	public static Scanner input;
 	public static String row;
 	public static String col;
