@@ -34,7 +34,7 @@ public class EventAlamAndSharon implements Event {
         CaveExplorer.startExploring(false);
 		//printGrid();
         AlamAI.begin();
-        SharonInput.play();
+        SharonInput.beginPlayer();
         
 	}
 	

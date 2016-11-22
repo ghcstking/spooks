@@ -6,9 +6,9 @@ public class AlexFieldGenerator {
 
 	public static boolean [][] board = new boolean [5][5];
 	public static String cheatCode = "spookyturkey";
-	public boolean gameWon;
+	public static boolean gameWon = false;
 
-	public static void startGame(){
+	public static boolean startGame(){
 		int turnsLeft = 40;
 		generateBoard();
 		printBoard();
@@ -18,11 +18,32 @@ public class AlexFieldGenerator {
 			String rowCord = CaveExplorer.in.nextLine();
 			CaveExplorer.print("Enter column coordinate.");
 			String colCord = CaveExplorer.in.nextLine();
-			EdwinWinConditions.changeBoard(rowCord,colCord);
-			if(EdwinWinConditions.isCleared(board)){
-				
+			if(EdwinWinConditions.cheatCodeEntered(rowCord)||EdwinWinConditions.cheatCodeEntered(colCord)){
+				gameWon = true;
+				break;
 			}
+			else{
+				while(!EdwinWinConditions.isValidPoint(rowCord,colCord)){
+					CaveExplorer.print("Are you braindead? There's no lightbulb at that point.");
+					CaveExplorer.print("Enter row coordinate.");
+					rowCord = CaveExplorer.in.nextLine();
+					CaveExplorer.print("Enter column coordinate.");
+					colCord = CaveExplorer.in.nextLine();
+				}
+				changeLights(Integer.parseInt(rowCord),Integer.parseInt(colCord));
+				if(EdwinWinConditions.isCleared(board)){
+					gameWon = true;
+					break;
+				}
+				else{
+					turnsLeft--;
+					printBoard();
+					CaveExplorer.print("Turns left: "+turnsLeft);
+				}
+			}
+
 		}
+		return gameWon;
 	}
 
 	private static void generateBoard(){
@@ -38,6 +59,69 @@ public class AlexFieldGenerator {
 			board[randRow][randCol] = !board[randRow][randCol];
 			lightsToTurnOff--;
 		}
+	}
+	public static void changeLights(int r, int c) {
+		board[r][c] = !board[r][c];
+		if(c==0){
+			board[r][c+1] = !board[r][c+1];
+			if(r==0){
+				board[r+1][c] = !board[r+1][c];
+			}
+			else if(r==board.length-1){
+				board[r-1][c] = !board[r-1][c];
+			}
+			else{
+				board[r-1][c] = !board[r-1][c];
+				board[r+1][c] = !board[r+1][c];
+			}
+		}
+		else if(c==board[0].length-1){
+			board[r][c-1] = !board[r][c-1];
+			if(r==0){
+				board[r+1][c] = !board[r+1][c];
+			}
+			else if (r==board.length-1){
+				board[r-1][c] = !board[r-1][c];
+			}
+			else{
+				board[r-1][c] = !board[r-1][c];
+				board[r+1][c] = !board[r+1][c];
+			}
+		}
+		else if (r==0){
+			board[r+1][c] = !board[r+1][c];
+			if(c==0){
+				board[r][c+1] = !board[r][c+1];
+			}
+			else if (c==board[0].length-1){
+				board[r][c-1] = !board[r][c-1];
+			}
+			else{
+				board[r][c+1] = !board[r][c+1];
+				board[r][c-1] = !board[r][c-1];
+			}
+		}
+		else if (r==board.length-1){
+			board[r-1][c] = !board[r-1][c];
+			if(c==0){
+				board[r][c+1] = !board[r][c+1];
+			}
+			else if (c==board[0].length-1){
+				board[r][c-1] = !board[r][c-1];
+			}
+			else{
+				board[r][c+1] = !board[r][c+1];
+				board[r][c-1] = !board[r][c-1];
+			}
+		}
+		else{
+			board[r-1][c] = !board[r-1][c];
+			board[r+1][c] = !board[r+1][c];
+			board[r][c+1] = !board[r][c+1];
+			board[r][c-1] = !board[r][c-1];
+
+		}
+
 	}
 	private static void printBoard(){
 		String boardImage = " ";
