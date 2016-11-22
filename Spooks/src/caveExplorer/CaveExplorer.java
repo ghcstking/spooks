@@ -25,7 +25,7 @@ public class CaveExplorer {
 		caves[2][2] = new EventRoom("You avoid joining the legion of skulls", new EventJasonAndVicki());
 		caves[3][2] = new EventRoom("You've escaped", new EventAlamAndSharon());
 		caves[2][2] = new EventRoom("This is the room where you were challenged by Asher", new EventEdwinAndAlex());
-		caves[0][7] = new EventRoom("This is where you found the black egg, but never took it. \n It disappeared mysteriously.", new Egg());
+		caves[0][7] = new EventRoom("This is where you found the black egg, but never took it. \n It disappeared mysteriously.", new JasonEgg());
 		
 
 		currentRoom = caves[0][1];

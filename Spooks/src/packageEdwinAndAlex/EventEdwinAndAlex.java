@@ -21,6 +21,23 @@ public class EventEdwinAndAlex implements Event {
 			"You have forty turns to complete your assignment.",
 			"Make your choice."
 	};
+	public static final String[]WIN = {
+			"*chokes on his doughnut*.",
+			"'How did you solve the impossible puzzle!?'",
+			"You hear a chicken's cuckoo",
+			"'No...it can't be...THIS CAN'T BE HAPPENING!'",
+			"A black egg appears out of thin air, smashing into Asher.",
+			"NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+			"Asher disintegrates into thin air.",
+			"The door opens ... it seems you can now proceed."
+	};
+	
+	public static final String[]LOSE = {
+			"'What a pity.'",
+			"A crevice opens, filled with chicken eggs.",
+			"You fall through to your untimely demise."
+	};
+	
 	public void play() {
 		readSequence(INTRO);
 		CaveExplorer.print("Are you ready?");
@@ -30,8 +47,15 @@ public class EventEdwinAndAlex implements Event {
 		CaveExplorer.print("Let the games begin.");
 		CaveExplorer.inventory.setMap(false);
 		CaveExplorer.startExploring(false);
-		AlexFieldGenerator.startGame();
-		//TODO FIX THIS SHIT
+		if(AlexFieldGenerator.startGame()){
+			readSequence(WIN);
+			CaveExplorer.inventory.setMap(true);
+			CaveExplorer.startExploring(true);
+		}
+		else{
+			readSequence(LOSE);
+			CaveExplorer.main(null);
+		}
 	}
 
 	public static void readSequence(String[] seq) {

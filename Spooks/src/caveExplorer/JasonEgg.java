@@ -1,6 +1,6 @@
 package caveExplorer;
 
-public class Egg implements Event {
+public class JasonEgg implements Event {
 	
 	public static String answer;
 

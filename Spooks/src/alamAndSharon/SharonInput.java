@@ -3,20 +3,21 @@ package alamAndSharon;
 import caveExplorer.CaveExplorer;
 import java.util.Scanner;
 
-public class SharonInput{
+public class SharonInput extends EventAlamAndSharon{
 	
 	public static Scanner in = new Scanner(System.in);
 	public static String txtInput;
 	public static int inputInt;
 	
-	public static int playerColCurrent = 5;
+	public static int playerColCurrent = 5; //fake pos
 	public static int playerRowCurrent = 5;
 	//official position !=current position. If out of bounds/ spot taken, playerCurrent is changed back to original position
-	public static int playerCol = 0;
-	public static int playerRow = 0;
+	public static int playerCol = 5;
+	public static int playerRow = 5;
 	
-	public static void play(){
+	public static void beginPlayer(){
 		while(true){
+			Items.cheatMap(ghostMap);
 			System.out.println("Where would you like to go?.");
 			
 			String response=in.nextLine();
@@ -25,6 +26,7 @@ public class SharonInput{
 		
 	}
 	public static void interpretInput(String input) {
+		input=input.toLowerCase();
 		while(!isValid(input)){
 			System.out.println("You can only enter " + "'w','a','s', or 'd'");
 			input = CaveExplorer.in.nextLine();
@@ -55,6 +57,19 @@ public class SharonInput{
 			playerColCurrent+=1;
 		}
 		
+		if(dir.equals("cheat end")){
+			Items.cheatCodes(1);
+		}
+		if(dir.equals("cheat cloak")){
+			Items.cheatCodes(2);
+		}
+		if(dir.equals("cheat flash")){
+			Items.cheatCodes(3);
+		}
+		if(dir.equals("1")){
+			Items.cheatCodes(4);
+		}
+		
 		
 	}
 	//checks to see if player is able to go to that room & sets the coordinates of the destination.
@@ -77,6 +92,7 @@ public class SharonInput{
 				System.out.println("'It's time to make haunted houses great again!'");
 				
 				//loose game here
+				caveExplorer.CaveExplorer.startExploring(true);
 			}
 		}
 		if(isAvail(playerRowCurrent,EventAlamAndSharon.playerMap.length-1)&& isAvail(playerColCurrent,EventAlamAndSharon.playerMap[0].length-1)){
@@ -92,6 +108,7 @@ public class SharonInput{
 				System.out.println("Trump got bored so he went to play golf");
 				
 				// win game here
+				caveExplorer.CaveExplorer.startExploring(true);
 			}	
 		}else{
 			System.out.println("You are restricted from leaving this map.");
@@ -129,7 +146,7 @@ public class SharonInput{
 	}
 	private static boolean isValid(String input) {
 		//check to see if valid direction
-		String[] keys = {"w", "a", "s", "d"};
+		String[] keys = {"w", "a", "s", "d","cheat end","cheat cloak","cheat flash"};
 		for (String key: keys) {
 			if (input.equals(key)) {
 				return true;
