@@ -31,6 +31,7 @@ public class SharonInput{
 		}
 		
 		moveThePlayer(input);
+		
 		AlamAI.moveDaGhost();
 		playerCheckRoom(playerRow,playerCol);
 	}
@@ -59,6 +60,9 @@ public class SharonInput{
 	//checks to see if player is able to go to that room & sets the coordinates of the destination.
 	//move player to room given direction.
 	public static void playerCheckRoom(int row,int col) {
+		//checks for items first
+		//this way you can get a cloak and save yourself if a ghost happens to walk in the room
+		Items.checkForItem();
 		if(isRoomFull()){
 			//checks to see if you have a cloak
 			if(Items.invisibilityCloak < 0){
@@ -88,16 +92,17 @@ public class SharonInput{
 				System.out.println("Trump got bored so he went to play golf");
 				
 				// win game here
-			}
+			}	
 		}else{
 			System.out.println("You are restricted from leaving this map.");
 		}
-		
+		//checks for nearby ghost
+		Items.sensor();
 		
 	}
 
 
-
+//check if ghost are active before then checking if they over lap
 	private static boolean isRoomFull() {
 		if(AlamAI.ghost1){
 			if(AlamAI.locationCol1 == playerCol && AlamAI.locationRow1 == playerRow){
