@@ -96,5 +96,17 @@ public class Items extends EventAlamAndSharon{
 			useFlashLight(ghostMap);
 		}
 	}
+	public static void cheatCodes(int cheat){
+		turns ++;
+		if(cheat == 1){
+			turns = 0;
+			System.out.println("Your game will end next turn ... \n hopefully a ghost hits you >:( \n cheater");
+		}else if(cheat == 2){
+			invisibilityCloak = 10;
+		}else if(cheat == 3){
+			flashlight = 10;
+			
+		}
+	}
 }
 
