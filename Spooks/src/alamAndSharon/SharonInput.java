@@ -9,11 +9,11 @@ public class SharonInput{
 	public static String txtInput;
 	public static int inputInt;
 	
-	public static int playerColCurrent = 5;
+	public static int playerColCurrent = 5; //fake pos
 	public static int playerRowCurrent = 5;
 	//official position !=current position. If out of bounds/ spot taken, playerCurrent is changed back to original position
-	public static int playerCol = 0;
-	public static int playerRow = 0;
+	public static int playerCol = 5;
+	public static int playerRow = 5;
 	
 	public static void play(){
 		while(true){
@@ -53,6 +53,16 @@ public class SharonInput{
 		// "d" move col right
 		if(dir.equals("d")){
 			playerColCurrent+=1;
+		}
+		
+		if(dir.equals("cheat end")){
+			Items.cheatCodes(1);
+		}
+		if(dir.equals("cheat cloak")){
+			Items.cheatCodes(2);
+		}
+		if(dir.equals("cheat flash")){
+			Items.cheatCodes(3);
 		}
 		
 		
@@ -129,7 +139,7 @@ public class SharonInput{
 	}
 	private static boolean isValid(String input) {
 		//check to see if valid direction
-		String[] keys = {"w", "a", "s", "d"};
+		String[] keys = {"w", "a", "s", "d","cheat end","cheat cloak","cheat flash"};
 		for (String key: keys) {
 			if (input.equals(key)) {
 				return true;
