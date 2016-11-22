@@ -7,6 +7,7 @@ public class JasonGenerateField {
 	// BOOLEAN ARRAY
 	public static String[][] mine3;
 	// FAKE ARRAY
+	public static boolean[][] mine4;
 	public static String map;
 	
 	public static void play() {
@@ -27,6 +28,7 @@ public class JasonGenerateField {
 		mine = new String[9][9];
 		mine2 = new boolean[9][9];
 		mine3 = new String[9][9];
+		mine4 = new boolean[9][9];
 	}
 	
 	public static void createMines() {

@@ -14,23 +14,14 @@ public class VickiCheckField {
 	public static boolean ongoing = true;
 	public static String empty = " ";
 	public static int flags = 0;
+	public static int flagCount = 10;
 	
 	public static void play() {
 		input = new Scanner(System.in);
 		while(ongoing) {
+			win();
 			if(flag()) {
-				print("Please enter a row");
-				fRow = getInput();
-				print("Please enter a column");
-				fCol = getInput();
-				if(validateInput(fRow, fCol)) {
-					int trunRow = Integer.parseInt(fRow);
-					int trunCol = Integer.parseInt(fCol);
-					JasonGenerateField.mine3[trunRow][trunCol] = "$";
-					System.out.println(checkFlags(trunRow, trunCol));
-					updateMap(trunRow, trunCol);
-					win();
-				}
+				runFlag();
 			}
 			else {
 				converse();
@@ -38,6 +29,30 @@ public class VickiCheckField {
 		}
 	}
 	
+	public static void runFlag() {
+		print("Please enter a row");
+		fRow = getInput();
+		print("Please enter a column");
+		fCol = getInput();
+		if(validateInput(fRow, fCol)) {
+			int trunRow = Integer.parseInt(fRow);
+			int trunCol = Integer.parseInt(fCol);
+			updateFlagCount(trunRow, trunCol);
+			updateMine4(trunRow, trunCol);
+			if(flagCount < 0) {
+				print("You are at " + flagCount + " flags. You must've made a flagging mistake.");
+			}
+			else {
+				print("You have " + flagCount + " flags left.");						
+			}
+		}
+	}
+
+	public static void updateMine4(int r, int c) {
+		JasonGenerateField.mine4[r][c] = true;
+		updateMap(r, c);
+	}
+
 	public static String getInput() {
 		return input.nextLine();
 	}
@@ -95,18 +110,23 @@ public class VickiCheckField {
 	}
 	
 	public static void updateMap(int r, int c) {
-		if (JasonGenerateField.mine3[r][c] == JasonGenerateField.mine[r][c] ||
-				JasonGenerateField.mine3[r][c].equals(" ")) {
-			print("Already cleared.");
+		if (JasonGenerateField.mine4[r][c]) {
+			JasonGenerateField.mine3[r][c] = "$";
 		}
 		else {
-			if (JasonGenerateField.mine[r][c].equals("0")) {
-				checkSurrounding(r, c);
+			if (JasonGenerateField.mine3[r][c] == JasonGenerateField.mine[r][c] ||
+					JasonGenerateField.mine3[r][c].equals(" ")) {
+				print("Already cleared.");
 			}
 			else {
-				JasonGenerateField.mine3[r][c] = JasonGenerateField.mine[r][c];
-			}
-		}
+				if (JasonGenerateField.mine[r][c].equals("0")) {
+					checkSurrounding(r, c);
+				}
+				else {
+					JasonGenerateField.mine3[r][c] = JasonGenerateField.mine[r][c];
+				}
+			}	
+		}	
 		JasonGenerateField.printField();
 	}
 	
@@ -242,11 +262,32 @@ public class VickiCheckField {
 		CaveExplorer.main(null);
 	}
 	
-	public static int checkFlags(int r, int c) {
-		if (JasonGenerateField.mine3[r][c].equals("$") && JasonGenerateField.mine[r][c].equals("X")) {
-			flags++;
+	public static int updateFlagCount(int r, int c) {
+		if (JasonGenerateField.mine3[r][c].equals("$") && unflag(r,c)) {
+			updateMap(r,c);
 		}
-		return flags;
+		else {
+			if (checkIfMine(r,c)) {
+				flags++;
+			}
+			flagCount--;
+		}
+		return flagCount;
+	}
+	
+	public static boolean checkIfMine(int r, int c) {
+		if (JasonGenerateField.mine3[r][c].equals("$") && JasonGenerateField.mine[r][c].equals("X")) {
+			return true;
+		}
+		return false;
+	}
+	
+	public static boolean unflag(int r, int c) {
+		print("Already flagged. Would you like to unflag?");
+		if (getInput().equals("Yes")) {
+			return true;
+		}
+		return false;
 	}
 	
 	public static boolean win() {

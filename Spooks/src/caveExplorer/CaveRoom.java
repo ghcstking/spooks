@@ -117,7 +117,6 @@ public class CaveRoom {
 	}
 
 	public void interpretInput(String input) {
-		System.out.println(Arrays.toString(doors));
 		while(!isValid(input)){
 			System.out.println("You can only enter " + "'w','a','s', or 'd'");
 			input = CaveExplorer.in.nextLine();
@@ -132,14 +131,21 @@ public class CaveRoom {
 				break;
 			}
 		}
-//		if(doors[indexFound].isLocked() == false){
-//			goToRoom(indexFound);
-//		}
-//		else{
-//			CaveExplorer.print("Key pls");
-//		}
 		
-		goToRoom(indexFound);
+		
+		
+		if(doors[indexFound].isLocked() == true){
+			CaveExplorer.print("Key pls");
+		}
+		else{
+			goToRoom(indexFound);
+		}
+		
+	}
+	
+	public void makeLocks(){
+		CaveExplorer.currentRoom.doors[2].setLock(true);
+		CaveExplorer.currentRoom.doors[1].setLock(true);
 	}
 
 	public void goToRoom(int direction) {
