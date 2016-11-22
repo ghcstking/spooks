@@ -23,7 +23,7 @@ public class AlexFieldGenerator {
 				break;
 			}
 			else{
-				while(!EdwinWinConditions.isValidPoint(Integer.parseInt(rowCord),Integer.parseInt(colCord))){
+				while(!EdwinWinConditions.isValidPoint(rowCord,colCord)){
 					CaveExplorer.print("Are you braindead? There's no lightbulb at that point.");
 					CaveExplorer.print("Enter row coordinate.");
 					rowCord = CaveExplorer.in.nextLine();

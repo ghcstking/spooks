@@ -20,14 +20,31 @@ public class EdwinWinConditions {
 	}
 
 
-	public static boolean isValidPoint(int rowCord, int colCord){
+	public static boolean isValidPoint(String rowCord, String colCord){
 		boolean validRow = false;
 		boolean validCol = false;
-		for(int r = 0; r < AlexFieldGenerator.board.length-1;r++){
-			if(rowCord==r)validRow=true;
+		try{
+			Integer.parseInt(rowCord);
+			
 		}
-		for(int c = 0; c < AlexFieldGenerator.board[0].length-1;c++){
-			if(colCord==c)validCol=true;
+		catch(NumberFormatException e){
+			return false;
+		}
+		try{
+			Integer.parseInt(colCord);
+			
+		}
+		catch(NumberFormatException e){
+			return false;
+		}
+
+		int ro = Integer.parseInt(rowCord);
+		int co = Integer.parseInt(colCord);
+		for(int r = 0; r < AlexFieldGenerator.board.length;r++){
+			if(ro==r)validRow=true;
+		}
+		for(int c = 0; c < AlexFieldGenerator.board[0].length;c++){
+			if(co==c)validCol=true;
 		}
 		return (validRow&&validCol);
 	}
