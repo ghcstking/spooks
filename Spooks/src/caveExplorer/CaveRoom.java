@@ -139,7 +139,7 @@ public class CaveRoom {
 		}
 		else{
 			goToRoom(indexFound);
-		}
+		}s
 		
 	}
 	

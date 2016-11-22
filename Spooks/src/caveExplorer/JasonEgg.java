@@ -33,7 +33,7 @@ public class JasonEgg implements Event {
             "'But like ya know...being a talking egg is tough work you don't even know...blah blah blah blah blah..'",
             "This egg just keeps blubbering on an on, but then you realized: you pick up an Egg-cellent Pun Egg",
             "Now you're doomed to listen to horrible egg puns in this void for eternity..."
-    };
+    };s
 	
 	public void play() {
 		 readSequence(SEQ);
