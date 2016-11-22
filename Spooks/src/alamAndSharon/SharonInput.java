@@ -3,7 +3,7 @@ package alamAndSharon;
 import caveExplorer.CaveExplorer;
 import java.util.Scanner;
 
-public class SharonInput{
+public class SharonInput extends EventAlamAndSharon{
 	
 	public static Scanner in = new Scanner(System.in);
 	public static String txtInput;
@@ -15,8 +15,9 @@ public class SharonInput{
 	public static int playerCol = 5;
 	public static int playerRow = 5;
 	
-	public static void play(){
+	public static void beginPlayer(){
 		while(true){
+			Items.cheatMap(ghostMap);
 			System.out.println("Where would you like to go?.");
 			
 			String response=in.nextLine();
@@ -65,7 +66,7 @@ public class SharonInput{
 		if(dir.equals("cheat flash")){
 			Items.cheatCodes(3);
 		}
-		if(dir.equals("cheat map")){
+		if(dir.equals("1")){
 			Items.cheatCodes(4);
 		}
 		
