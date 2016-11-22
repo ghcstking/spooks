@@ -113,5 +113,25 @@ public class Items extends EventAlamAndSharon{
 			cheatMap = true;
 		}
 	}
+	
+	public static void cheatMap(String[][] pic){
+		for(int y = 0; y < pic.length; y++){
+			for(int x = 0; x < pic[y].length; x++){
+				if(y == SharonInput.playerRow && x == SharonInput.playerCol){
+					pic[y][x] = "|X|";
+				}else if((AlamAI.ghost1 && (y == AlamAI.locationRow1 && x == AlamAI.locationCol1)) ||
+						 (AlamAI.ghost2 && (y == AlamAI.locationRow2 && x == AlamAI.locationCol2)) ||
+						 (AlamAI.ghost3 && (y == AlamAI.locationRow3 && x == AlamAI.locationCol3)) ||
+						 (AlamAI.ghost4 && (y == AlamAI.locationRow4 && x == AlamAI.locationCol4))
+						){
+					pic[y][x] = "|O|";	
+				}else{
+					pic[y][x] = "|_|";						
+				}
+				System.out.print(pic[y][x]);
+			}
+			System.out.println();	
+		}
+	}
 }
 
