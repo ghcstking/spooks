@@ -23,7 +23,6 @@ public class JasonGenerateField {
 		VickiCheckField.play();
 	}
 	
-	
 	public static void generateField() {
 		mine = new String[9][9];
 		mine2 = new boolean[9][9];
