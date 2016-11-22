@@ -6,6 +6,7 @@ public class AlexFieldGenerator {
 
 	public static boolean [][] board = new boolean [5][5];
 	public static String cheatCode = "spookyturkey";
+	public boolean gameWon;
 
 	public static void startGame(){
 		int turnsLeft = 40;
@@ -18,7 +19,7 @@ public class AlexFieldGenerator {
 			CaveExplorer.print("Enter column coordinate.");
 			String colCord = CaveExplorer.in.nextLine();
 			EdwinWinConditions.changeBoard(board,rowCord,colCord);
-
+			
 		}
 	}
 

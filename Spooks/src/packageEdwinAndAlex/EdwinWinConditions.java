@@ -21,24 +21,30 @@ public class EdwinWinConditions {
 
 	public static void changeBoard(boolean [][] board,String rowCord,String colCord){
 		if(cheatCodeEntered(rowCord)||(cheatCodeEntered(colCord))){
-
+			
 		}
-		else{
 			int r = Integer.parseInt(rowCord);
 			int c = Integer.parseInt(colCord);
-			if(isValidPoint(r,c,board)){
-				changeLights(r,c,board);
+			while(!isValidPoint(r,c,board)){
+				CaveExplorer.print("Are you braindead? There's no lightbulb at that point.");
+				CaveExplorer.print("Enter row coordinate.");
+				r = Integer.parseInt(CaveExplorer.in.nextLine());
+				CaveExplorer.print("Enter column coordinate.");
+				c = Integer.parseInt(CaveExplorer.in.nextLine());
 			}
-			else{
-				CaveExplorer.print("Are you braindead? Theres no lightbulb at that point.");
-			}
+			changeLights(r,c,board);
 		}
-
-	}
 
 	private static void changeLights(int r, int c, boolean[][] board) {
 		// TODO Auto-generated method stub
-
+		//have to first establish special cases
+		board[r][c] = !board[r][c];
+		if(c==0){
+			if(r==0){
+				board[r+1][c] = !board[r+1][c];
+				board[r][c+1] = !board[r][c+1];
+			}
+		}
 
 	}
 
