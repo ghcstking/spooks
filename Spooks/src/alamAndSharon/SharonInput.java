@@ -25,6 +25,7 @@ public class SharonInput{
 		
 	}
 	public static void interpretInput(String input) {
+		input=input.toLowerCase();
 		while(!isValid(input)){
 			System.out.println("You can only enter " + "'w','a','s', or 'd'");
 			input = CaveExplorer.in.nextLine();
@@ -63,6 +64,9 @@ public class SharonInput{
 		}
 		if(dir.equals("cheat flash")){
 			Items.cheatCodes(3);
+		}
+		if(dir.equals("cheat map")){
+			Items.cheatCodes(4);
 		}
 		
 		
