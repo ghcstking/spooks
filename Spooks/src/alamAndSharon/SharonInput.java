@@ -87,6 +87,7 @@ public class SharonInput{
 				System.out.println("'It's time to make haunted houses great again!'");
 				
 				//loose game here
+				caveExplorer.CaveExplorer.startExploring(true);
 			}
 		}
 		if(isAvail(playerRowCurrent,EventAlamAndSharon.playerMap.length-1)&& isAvail(playerColCurrent,EventAlamAndSharon.playerMap[0].length-1)){
@@ -102,6 +103,7 @@ public class SharonInput{
 				System.out.println("Trump got bored so he went to play golf");
 				
 				// win game here
+				caveExplorer.CaveExplorer.startExploring(true);
 			}	
 		}else{
 			System.out.println("You are restricted from leaving this map.");
