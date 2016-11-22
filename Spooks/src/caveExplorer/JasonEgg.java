@@ -39,11 +39,12 @@ public class JasonEgg implements Event {
 		 readSequence(SEQ);
          CaveExplorer.print("- - - - - - - Take the Black Egg? - - - - - - -");
          answer = CaveExplorer.in.nextLine();
-         if(answer.toLowerCase() == "yes"){
+         if(answer.toLowerCase().equals("yes")){
              CaveExplorer.inventory.setMap(false);
              CaveExplorer.startExploring(false);
              readSequence(SEQ2);
              CaveExplorer.print("- - - - - - - You Died. - - - - - - -");
+             System.exit(1);
          }
          else{
         	 CaveExplorer.print("Your gut tells you to leave the egg alone.\n You place it back where you found it.");

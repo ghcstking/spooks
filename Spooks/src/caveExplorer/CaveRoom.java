@@ -132,14 +132,21 @@ public class CaveRoom {
 				break;
 			}
 		}
-//		if(doors[indexFound].isLocked() == false){
-//			goToRoom(indexFound);
-//		}
-//		else{
-//			CaveExplorer.print("Key pls");
-//		}
 		
-		goToRoom(indexFound);
+		
+		
+		if(doors[indexFound].isLocked() == true){
+			CaveExplorer.print("Key pls");
+		}
+		else{
+			goToRoom(indexFound);
+		}
+		
+	}
+	
+	public void makeLocks(){
+		CaveExplorer.currentRoom.doors[2].setLock(true);
+		CaveExplorer.currentRoom.doors[1].setLock(true);
 	}
 
 	public void goToRoom(int direction) {
