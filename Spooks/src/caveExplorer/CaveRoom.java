@@ -117,7 +117,6 @@ public class CaveRoom {
 	}
 
 	public void interpretInput(String input) {
-		System.out.println(Arrays.toString(doors));
 		while(!isValid(input)){
 			System.out.println("You can only enter " + "'w','a','s', or 'd'");
 			input = CaveExplorer.in.nextLine();
