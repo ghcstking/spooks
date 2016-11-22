@@ -8,6 +8,10 @@ public class CaveRoom {
 	private String directions;
 	private String contents;
 	private String defaultContents;
+	
+	private boolean event1done = false;
+	private boolean event2done = false;
+	private boolean event3done = false;
 
 	private CaveRoom[] borderingRooms;
 	private Door[] doors; 
@@ -132,20 +136,52 @@ public class CaveRoom {
 			}
 		}
 		
-		
-		
-		if(doors[indexFound].isLocked() == true){
-			CaveExplorer.print("Key pls");
+		if(doors[indexFound] == null){
+			System.out.println("Thats a wall you dummy.");
 		}
 		else{
-			goToRoom(indexFound);
+			makeLocks();
+			
+			if(doors[indexFound].isLocked() == true){
+				CaveExplorer.print("You need a key to gain access to this room.");
+				if(checkKeys()){
+					CaveExplorer.print("You pull out a key and you open the door. You're in.");
+					Inventory.keycount--;
+					doors[indexFound].setLock(false);
+					goToRoom(indexFound);
+				}
+			}
+			else{
+				goToRoom(indexFound);
+			}
 		}
+		
 		
 	}
 	
 	public void makeLocks(){
-		CaveExplorer.currentRoom.doors[2].setLock(true);
-		CaveExplorer.currentRoom.doors[1].setLock(true);
+		if(CaveExplorer.currentRoom == CaveExplorer.caves[0][2] && !event1done){
+			CaveExplorer.currentRoom.doors[2].setLock(true);
+		}
+		
+		if(CaveExplorer.currentRoom == CaveExplorer.caves[4][0] && !event2done){
+			CaveExplorer.currentRoom.doors[1].setLock(true);
+		}
+		if(CaveExplorer.currentRoom == CaveExplorer.caves[4][5] && !event3done){
+			CaveExplorer.currentRoom.doors[1].setLock(true);
+		}
+		
+		
+		
+	}
+	
+	
+	public boolean checkKeys(){
+		if(Inventory.keycount > 0){
+			Inventory.hasKey = true;
+			return true;
+		}
+		return false;
 	}
 
 	public void goToRoom(int direction) {
@@ -155,6 +191,18 @@ public class CaveRoom {
 		CaveExplorer.currentRoom.enter();
 		CaveExplorer.inventory.updateMap();
 	
+	}
+	
+	public void gainKey(){
+		if(CaveExplorer.currentRoom == CaveExplorer.caves[0][2]){
+			CaveExplorer.currentRoom.doors[2].setLock(true);
+		}
+		if(CaveExplorer.currentRoom == CaveExplorer.caves[0][2]){
+			CaveExplorer.currentRoom.doors[2].setLock(true);
+		}
+		if(CaveExplorer.currentRoom == CaveExplorer.caves[0][2]){
+			CaveExplorer.currentRoom.doors[2].setLock(true);
+		}
 	}
 	private boolean isValid(String input) {
 		String[] keys = {"w", "a", "s", "d"};
