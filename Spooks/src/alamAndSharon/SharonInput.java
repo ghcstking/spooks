@@ -146,22 +146,7 @@ public class SharonInput{
 		}
 		return true;
 	}
-	/*
-	public static void printPic(String[][] pic){
-			for(int y = 0; y < pic.length; y++){
-				for(int x = 0; x < pic[y].length; x++){
-					if(y == i && x ==j){
-						pic[y][x] = "X";
-					}else{
-						pic[y][x] = " ";						
-					}
-					System.out.print(pic[y][x]);
-				}
-				System.out.println();
-			}
-		}
-	 */
-
+	
 	
 }
 
