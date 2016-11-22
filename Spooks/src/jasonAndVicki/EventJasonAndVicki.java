@@ -5,7 +5,6 @@ import caveExplorer.Event;
 
 public class EventJasonAndVicki implements Event {
   
-	public boolean[][] field = new boolean[9][9];
         public static final String[] SEQ = {
         		"The room is lined with shelves of skulls.",
         		"Not the mention the huge, very angry skull statue amidst the shelves...",
