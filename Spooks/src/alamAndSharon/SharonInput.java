@@ -16,11 +16,12 @@ public class SharonInput{
 	public static int playerRow = 0;
 	
 	public static void play(){
-		
-		System.out.println("Where would you like to go?.");
-		
-		String response=in.nextLine();
-		interpretInput(response);
+		while(true){
+			System.out.println("Where would you like to go?.");
+			
+			String response=in.nextLine();
+			interpretInput(response);
+		}
 		
 	}
 	public static void interpretInput(String input) {
@@ -32,7 +33,6 @@ public class SharonInput{
 		moveThePlayer(input);
 		AlamAI.moveDaGhost();
 		playerCheckRoom(playerRow,playerCol);
-		checkGhostProximity();
 	}
 
 	
@@ -60,11 +60,35 @@ public class SharonInput{
 	//move player to room given direction.
 	public static void playerCheckRoom(int row,int col) {
 		if(isRoomFull()){
-			System.out.println("Game Over. You've run into the ghost.");
+			//checks to see if you have a cloak
+			if(Items.invisibilityCloak < 0){
+				System.out.println("A loud bang canbe heard behind you, you quickly put on your invisibility cloak and stand still.");
+				System.out.println("A blonde man with very small hands walks by you, mumbling something about the game being rigged");
+				System.out.println("You have lost a cloak");
+				Items.invisibilityCloak --;
+			// if not game ends
+			}else{
+				System.out.println("Game Over. You've run into Donald Trump.");
+				System.out.println("'I will deport you from this game' he cries as he kickes you out");
+				System.out.println("'It's time to make haunted houses great again!'");
+				
+				//loose game here
+			}
 		}
 		if(isAvail(playerRowCurrent,EventAlamAndSharon.playerMap.length-1)&& isAvail(playerColCurrent,EventAlamAndSharon.playerMap[0].length-1)){
 			playerRow=playerRowCurrent;
 			playerCol=playerColCurrent;
+			// removes a turn from the items class
+			Items.turns --;
+			if(Items.turns == 3){
+				System.out.println("I will find you, and I will deport you out of this game!");
+				System.out.println("This is gonna be bigly folks, No one tells me I have small hands!");
+			}
+			if(Items.turns <= 0){
+				System.out.println("Trump got bored so he went to play golf");
+				
+				// win game here
+			}
 		}else{
 			System.out.println("You are restricted from leaving this map.");
 		}
@@ -98,49 +122,6 @@ public class SharonInput{
 		
 			return false;
 	}
-	public static void checkGhostProximity(){
-		if(AlamAI.ghost1){
-			if(AlamAI.locationCol1 == playerCol+1 || AlamAI.locationCol1== playerCol-1){//check if ghost is left or right of player coordinate
-				System.out.println("Careful... Be cautious of what may be standing right beside you. ");
-			}
-		}
-		if(AlamAI.ghost1){
-			if(AlamAI.locationRow1 == playerRow+1 || AlamAI.locationRow1== playerRow-1){//check if ghost is above or below player coordinate
-				System.out.println("You hear a screech above you and the floor rumbles. ");
-			}
-		}
-		if(AlamAI.ghost2){
-			if(AlamAI.locationCol2 == playerCol+1 || AlamAI.locationCol2== playerCol-1){
-				System.out.println("Careful... Be cautious of what may be standing right beside you. ");
-			}
-		}
-		if(AlamAI.ghost2){
-			if(AlamAI.locationRow2 == playerRow+1 || AlamAI.locationRow2== playerRow-1){
-				System.out.println("You hear a screech above you and the floor rumbles. ");
-			}
-		}
-		if(AlamAI.ghost3){
-			if(AlamAI.locationCol3 == playerCol+1 || AlamAI.locationCol3== playerCol-1){
-				System.out.println("Careful... Be cautious of what may be standing right beside you. ");
-			}
-		}
-		if(AlamAI.ghost3){
-			if(AlamAI.locationRow3 == playerRow+1 || AlamAI.locationRow3== playerRow-1){
-				System.out.println("You hear a screech above you and the floor rumbles. ");
-			}
-		}
-		if(AlamAI.ghost4){
-			if(AlamAI.locationCol4 == playerCol+1 || AlamAI.locationCol4== playerCol-1){
-				System.out.println("Careful... Be cautious of what may be standing right beside you. ");
-			}
-		}
-		if(AlamAI.ghost4){
-			if(AlamAI.locationRow4 == playerRow+1 || AlamAI.locationRow4== playerRow-1){
-				System.out.println("You hear a screech above you and the floor rumbles. ");
-			}
-		}
-	}
-	
 	private static boolean isValid(String input) {
 		//check to see if valid direction
 		String[] keys = {"w", "a", "s", "d"};
