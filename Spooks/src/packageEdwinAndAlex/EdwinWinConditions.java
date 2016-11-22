@@ -10,8 +10,8 @@ public class EdwinWinConditions {
 
 	public static boolean isCleared(boolean [][] board){
 		for(boolean [] row: board){
-			for(boolean light:row){
-				if(!light){
+			for(boolean lightOff:row){
+				if(!lightOff){
 					return false;
 				}
 			}

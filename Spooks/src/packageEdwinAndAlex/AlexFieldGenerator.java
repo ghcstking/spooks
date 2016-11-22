@@ -19,7 +19,9 @@ public class AlexFieldGenerator {
 			CaveExplorer.print("Enter column coordinate.");
 			String colCord = CaveExplorer.in.nextLine();
 			EdwinWinConditions.changeBoard(rowCord,colCord);
-			
+			if(EdwinWinConditions.isCleared(board)){
+				
+			}
 		}
 	}
 
