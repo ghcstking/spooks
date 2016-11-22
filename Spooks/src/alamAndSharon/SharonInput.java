@@ -119,7 +119,7 @@ public class SharonInput{
 				return true;
 			}
 		}
-		
+		 
 			return false;
 	}
 	private static boolean isValid(String input) {
