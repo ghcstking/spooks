@@ -35,7 +35,7 @@ public class CaveExplorer {
 		caves[2][2] = new EventRoom("This is the room where you were challenged by Asher", new EventEdwinAndAlex());
 		caves[0][7] = new EventRoom("This is where you found the black egg, but never took it. \n It disappeared mysteriously.", new JasonEgg());
 
-		s
+		
 
 		currentRoom = caves[0][1];
 		currentRoom.enter();
