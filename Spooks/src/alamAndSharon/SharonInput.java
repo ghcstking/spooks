@@ -9,12 +9,15 @@ public class SharonInput{
 	public static String txtInput;
 	public static int inputInt;
 	
-	public static int playerCol = 5;
-	public static int playerRow = 5;
+	public static int playerColCurrent = 5;
+	public static int playerRowCurrent = 5;
+	//official position !=current position. If out of bounds/ spot taken, playerCurrent is changed back to original position
+	public static int playerCol = 0;
+	public static int playerRow = 0;
 	
 	public static void play(){
 		
-		CaveExplorer.print("Where would you like to go?.");
+		System.out.println("Where would you like to go?.");
 		
 		String response=in.nextLine();
 		interpretInput(response);
@@ -26,26 +29,46 @@ public class SharonInput{
 			input = CaveExplorer.in.nextLine();
 		}
 		
-		String[] keys = {"w","d","s","a"};
-		int indexFound = -1;
-		
-		for(int i = 0; i < keys.length; i++){
-			if(input.equals(keys[i])){
-				indexFound = i;
-				break;
-			}
-		}
+		moveThePlayer(input);
 		AlamAI.moveDaGhost();
-		goToRoom(indexFound);
+		playerCheckRoom(playerRow,playerCol);
 	}
 
 	
-	//move player to room given direction.
-	public static void goToRoom(int direction) {
-		
-		if(isRoomFull()){
-			
+	private static void moveThePlayer(String dir) {
+		// "w" move row up
+		if(dir.equals("w")){
+			playerRowCurrent+=1;
 		}
+		// "a" move col left
+		if(dir.equals("a")){
+			playerColCurrent-=1;
+		}
+		// "s" move row down
+		if(dir.equals("s")){
+			playerRowCurrent-=1;
+		}
+		// "d" move col right
+		if(dir.equals("d")){
+			playerColCurrent+=1;
+		}
+		
+		
+	}
+	//checks to see if player is able to go to that room & sets the coordinates of the destination.
+	//move player to room given direction.
+	public static void playerCheckRoom(int row,int col) {
+		if(isRoomFull()){
+			System.out.println("Game Over. You've run into the ghost.");
+		}
+		if(isAvail(playerRowCurrent,EventAlamAndSharon.playerMap.length-1)&& isAvail(playerColCurrent,EventAlamAndSharon.playerMap[0].length-1)){
+			playerRow=playerRowCurrent;
+			playerCol=playerColCurrent;
+		}else{
+			System.out.println("You are restricted from leaving this map.");
+		}
+		
+		
 	}
 
 
@@ -56,10 +79,26 @@ public class SharonInput{
 				return true;
 			}
 		}
+		if(AlamAI.ghost2){
+			if(AlamAI.locationCol2 == playerCol && AlamAI.locationRow2 == playerRow){
+				return true;
+			}
+		}
+		if(AlamAI.ghost3){
+			if(AlamAI.locationCol3 == playerCol && AlamAI.locationRow3 == playerRow){
+				return true;
+			}
+		}
+		if(AlamAI.ghost1){
+			if(AlamAI.locationCol1 == playerCol && AlamAI.locationRow1 == playerRow){
+				return true;
+			}
+		}
 		
-		return false;
+			return false;
 	}
 	private static boolean isValid(String input) {
+		//check to see if valid direction
 		String[] keys = {"w", "a", "s", "d"};
 		for (String key: keys) {
 			if (input.equals(key)) {
@@ -67,6 +106,15 @@ public class SharonInput{
 			}
 		}
 		return false;
+	}
+	public static boolean isAvail(int input, int max){
+		//Check to see if within bound of board
+		//int num = Integer.parseInt(input);
+		int num=input;
+		if(num < 0 || num > max){
+			return false;
+		}
+		return true;
 	}
 	/*
 	public static void printPic(String[][] pic){

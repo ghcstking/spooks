@@ -6,6 +6,7 @@ public class AlexFieldGenerator {
 
 	public static boolean [][] board = new boolean [5][5];
 	public static String cheatCode = "spookyturkey";
+	public boolean gameWon;
 
 	public static void startGame(){
 		int turnsLeft = 40;
@@ -17,7 +18,10 @@ public class AlexFieldGenerator {
 			String rowCord = CaveExplorer.in.nextLine();
 			CaveExplorer.print("Enter column coordinate.");
 			String colCord = CaveExplorer.in.nextLine();
-		
+			EdwinWinConditions.changeBoard(rowCord,colCord);
+			if(EdwinWinConditions.isCleared(board)){
+				
+			}
 		}
 	}
 
@@ -26,7 +30,7 @@ public class AlexFieldGenerator {
 		while(lightsToTurnOff>0){
 			int randRow = (int)(Math.random()*board.length);
 			int randCol = (int)(Math.random()*board[0].length);
-			
+
 			while(board[randRow][randCol]){
 				randRow = (int)(Math.random()*board.length);
 				randCol = (int)(Math.random()*board[0].length);
@@ -35,7 +39,6 @@ public class AlexFieldGenerator {
 			lightsToTurnOff--;
 		}
 	}
-	ss
 	private static void printBoard(){
 		String boardImage = " ";
 		for(int i = 0; i < board[0].length-1;i++){
@@ -55,7 +58,7 @@ public class AlexFieldGenerator {
 							text+=" - ";
 						}
 						else{
-							text+=" + ";
+							text+=" O ";
 						}
 					}
 					else if (i == 2){
@@ -67,10 +70,6 @@ public class AlexFieldGenerator {
 			}
 		}
 		CaveExplorer.print(boardImage);
-	}
-	
-	public static boolean cheatCodeEntered(String input){
-		return(input.equals(cheatCode));
 	}
 
 }
