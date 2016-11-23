@@ -62,7 +62,7 @@ public class Items extends EventAlamAndSharon{
 						 ghostMap[y][x] == "4"){
 					pic[y][x] = "( O )";	
 				}else{
-					pic[y][x] = "("+y+","+x+")";						
+					pic[y][x] = "(   )";						
 				}
 				System.out.print(pic[y][x]);
 			}
@@ -79,10 +79,10 @@ public class Items extends EventAlamAndSharon{
 		for(int x = 0; x<4; x++){
 			if (AlamAI.ghostArray[x]){
 				String xString = Integer.toString(x);
-				if((ghostMap[SharonInput.playerRow-1][SharonInput.playerCol] == xString && SharonInput.playerRow-1 >= 0) || 
-				   (ghostMap[SharonInput.playerRow+1][SharonInput.playerCol] == xString && SharonInput.playerRow+1 < ghostMap.length) ||
-				   (ghostMap[SharonInput.playerRow][SharonInput.playerCol-1] == xString && SharonInput.playerCol-1 >= 0) ||
-				   (ghostMap[SharonInput.playerRow][SharonInput.playerCol+1] == xString && SharonInput.playerCol+1 < ghostMap[SharonInput.playerRow].length)){
+				if((SharonInput.playerRow-1 >= 0 && ghostMap[SharonInput.playerRow-1][SharonInput.playerCol] == xString) || 
+				   (SharonInput.playerRow+1 < ghostMap.length && ghostMap[SharonInput.playerRow+1][SharonInput.playerCol] == xString) ||
+				   (SharonInput.playerCol-1 >= 0 && ghostMap[SharonInput.playerRow][SharonInput.playerCol-1] == xString) ||
+				   (SharonInput.playerCol+1 < ghostMap[SharonInput.playerRow].length) && ghostMap[SharonInput.playerRow][SharonInput.playerCol+1] == xString){
 					sensor++;
 				}
 			}
