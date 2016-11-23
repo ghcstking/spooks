@@ -40,6 +40,7 @@ public class SharonInput extends EventAlamAndSharon{
 
 	
 	private static void moveThePlayer(String dir) {
+		ghostMap[playerRow][playerCol] = null;
 		// "w" move row up
 		if(dir.equals("w")){
 			playerRowCurrent+=1;
@@ -114,6 +115,7 @@ public class SharonInput extends EventAlamAndSharon{
 			System.out.println("You are restricted from leaving this map.");
 		}
 		//checks for nearby ghost
+		ghostMap[playerRow][playerCol] = "player";
 		Items.sensor();
 		
 	}
