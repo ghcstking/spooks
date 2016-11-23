@@ -26,18 +26,22 @@ public class Items extends EventAlamAndSharon{
 		if(SharonInput.playerRow == 0 && SharonInput.playerCol == 4 && invisibilityCloak1){
 			invisibilityCloak ++;
 			invisibilityCloak1 = false;
+			System.out.println("you found a cloak");
 		}
 		if(SharonInput.playerRow == 8 && SharonInput.playerCol == 7 && invisibilityCloak2){
 			invisibilityCloak ++;
 			invisibilityCloak2 = false;
+			System.out.println("you found a cloak");
 		}
 		if(SharonInput.playerRow == 8 && SharonInput.playerCol== 7 && flashlight1){
 			flashlight ++;
 			flashlight1 = false;
+			System.out.println("you found a flash");
 		}
 		if(SharonInput.playerRow == 8 && SharonInput.playerCol == 7 && flashlight2){
 			flashlight ++;
 			flashlight2 = false;
+			System.out.println("you found a flash");
 		}
 	}
 	
