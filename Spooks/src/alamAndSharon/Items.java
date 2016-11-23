@@ -6,7 +6,7 @@ import caveExplorer.CaveExplorer;
 // Code by Alam
 public class Items extends EventAlamAndSharon{
 	//checks to see how many turns are available
-	public static int turns = 50;
+	public static int turns = 10;
 	
 	//items player can have
 	public static int invisibilityCloak = 0;
@@ -102,7 +102,7 @@ public class Items extends EventAlamAndSharon{
 		turns ++;
 		if(cheat == 1){
 			turns = 0;
-			System.out.println("Your game will end after the next turn ... \n Hopefully a ghost hits you >:( \n cheater");
+			System.out.println("Your is now over ... \n  >:( cheater");
 		}else if(cheat == 2){
 			invisibilityCloak += 10;
 			System.out.println("You gave yourself 10 invisibliity cloaks \n Sooner or later you'll run out");

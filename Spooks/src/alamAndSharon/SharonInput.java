@@ -59,7 +59,7 @@ public class SharonInput extends EventAlamAndSharon{
 		if(dir.equals("d")){
 			playerColCurrent+=1;
 		}
-		
+		//cheat codes activate here
 		if(dir.equals("cheat end")){
 			Items.cheatCodes(1);
 		}
@@ -69,9 +69,10 @@ public class SharonInput extends EventAlamAndSharon{
 		if(dir.equals("cheat flash")){
 			Items.cheatCodes(3);
 		}
-		if(dir.equals("1")){
+		if(dir.equals("cheat map")){
 			Items.cheatCodes(4);
 		}
+		
 		
 		
 	}
@@ -138,7 +139,7 @@ public class SharonInput extends EventAlamAndSharon{
 	}
 	private static boolean isValid(String input) {
 		//check to see if valid direction
-		String[] keys = {"w", "a", "s", "d","cheat end","cheat cloak","cheat flash"};
+		String[] keys = {"w", "a", "s", "d","cheat end","cheat cloak","cheat flash","cheat map"};
 		for (String key: keys) {
 			if (input.equals(key)) {
 				return true;
