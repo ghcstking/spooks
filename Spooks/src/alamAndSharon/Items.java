@@ -43,7 +43,10 @@ public class Items extends EventAlamAndSharon{
 	
 	//uses flash light and calls print map
 	public static void useFlashLight(){
-		if(flashlight > 0 && cheatMap == false){
+		System.out.println("flash gets called");
+		if(flashlight > 0){
+			//&& cheatMap == false){
+			System.out.println("flash works");
 			//calls map printer
 			printDaMap();
 			System.out.println("You have lost a flash light");
@@ -60,13 +63,18 @@ public class Items extends EventAlamAndSharon{
 						 ghostMap[y][x] == "2" || 
 						 ghostMap[y][x] == "3" || 
 						 ghostMap[y][x] == "4"){
-					pic[y][x] = "( "+ghostMap[y][x] +" )";	
+					pic[y][x] = "( G )";	
 				}else{
 					pic[y][x] = "(   )";						
 				}
 				System.out.print(pic[y][x]);
 			}
 			System.out.println();	
+		}
+		for(int i = ghostMap.length-1; i >= 0; i--){
+			for(int j = 0; j < ghostMap[i].length; j++){
+				ghostMap[i][j] = null;
+			}
 		}
 		System.out.println("You get scared and pull out your flashlight");
 		System.out.println("You are the X and the O are the Ghost");
@@ -75,24 +83,26 @@ public class Items extends EventAlamAndSharon{
 
 	//check to see if ghost are near by
 	public static void sensor(){
-		int sensor = 0;
+		String ints[] ={"1","2","3","4"};
+		int sensorGhost = 0;
+		System.out.println("method runs");
 		for(int x = 0; x<4; x++){
 			if (AlamAI.ghostArray[x]){
-				String xString = Integer.toString(x);
+				String xString = ints[x];
 				if((SharonInput.playerRow-1 >= 0 && ghostMap[SharonInput.playerRow-1][SharonInput.playerCol] == xString) || 
 				   (SharonInput.playerRow+1 < ghostMap.length && ghostMap[SharonInput.playerRow+1][SharonInput.playerCol] == xString) ||
 				   (SharonInput.playerCol-1 >= 0 && ghostMap[SharonInput.playerRow][SharonInput.playerCol-1] == xString) ||
 				   (SharonInput.playerCol+1 < ghostMap[SharonInput.playerRow].length) && ghostMap[SharonInput.playerRow][SharonInput.playerCol+1] == xString){
-					sensor++;
+					sensorGhost++;
 				}
 			}
 		}
 		//check to see if flash light is needed
-		if(sensor == 1 || sensor == 2){
+		if(sensorGhost == 1 || sensorGhost == 2){
 			System.out.println("You feel something is lurking nearby");
 			useFlashLight();
 		}
-		if(sensor >= 3){
+		if(sensorGhost >= 3){
 			System.out.println("You feel surrounded");
 			useFlashLight();
 		}

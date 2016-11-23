@@ -86,28 +86,29 @@ public class SharonInput extends EventAlamAndSharon{
 		//this way you can get a cloak and save yourself if a ghost happens to walk in the room
 		Items.checkForItem();
 		
-		if(isRoomFull()){
-			//checks to see if you have a cloak
-			if(Items.invisibilityCloak > 0){
-				System.out.println("A loud bang can be heard behind you, you quickly put on your invisibility cloak and stand still.");
-				System.out.println("A blonde man with very small hands walks by you, mumbling something about the game being rigged");
-				System.out.println("You have lost a cloak");
-				Items.invisibilityCloak --;
-			// if not game ends
-			}else{
-				System.out.println("Game Over. You've run into Donald Trump.");
-				System.out.println("'I will deport you from this game' he cries as he kickes you out");
-				System.out.println("'It's time to make haunted houses great again!'");
-				
-				//loose game here
-				caveExplorer.CaveExplorer.startExploring(true);
-			}
-		}
+		
 		if(isAvail(playerRowCurrent,EventAlamAndSharon.playerMap.length-1)
 		   && isAvail(playerColCurrent,EventAlamAndSharon.playerMap[0].length-1)){
 			playerRow=playerRowCurrent;
 			playerCol=playerColCurrent;
 			// removes a turn from the items class
+			if(isRoomFull()){
+				//checks to see if you have a cloak
+				if(Items.invisibilityCloak > 0){
+					System.out.println("A loud bang can be heard behind you, you quickly put on your invisibility cloak and stand still.");
+					System.out.println("A blonde man with very small hands walks by you, mumbling something about the game being rigged");
+					System.out.println("You have lost a cloak");
+					Items.invisibilityCloak --;
+				// if not game ends
+				}else{
+					System.out.println("Game Over. You've run into Donald Trump.");
+					System.out.println("'I will deport you from this game' he cries as he kickes you out");
+					System.out.println("'It's time to make haunted houses great again!'");
+					
+					//loose game here
+					caveExplorer.CaveExplorer.startExploring(true);
+				}
+			}
 			Items.turns --;
 			if(Items.turns == 3){
 				System.out.println("I will find you, and I will deport you out of this game!");
@@ -132,12 +133,13 @@ public class SharonInput extends EventAlamAndSharon{
 		//checks for nearby ghost and alerts player
 		Items.sensor();
 		//adds player back in array
-			ghostMap[playerRow][playerCol] = "player";
+		ghostMap[playerRowCurrent][playerColCurrent] = "player";
 	}
 
 
 //check if ghost are active before then checking if they over lap
 	private static boolean isRoomFull() {
+		System.out.println(ghostMap[playerRowCurrent][playerColCurrent]);
 		if (ghostMap[playerRowCurrent][playerColCurrent] != null){
 			return true;
 		}	 
