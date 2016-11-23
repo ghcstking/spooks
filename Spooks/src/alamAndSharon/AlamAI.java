@@ -147,7 +147,7 @@ public class AlamAI extends EventAlamAndSharon{
 		if((move.equals("s") || move.equals("a")) && location > 0){
 			location--;
 		}
-		if((move.equals("w") || move.equals("d")) && location < ghostMap.length){
+		if((move.equals("w") || move.equals("d")) && location < ghostMap.length-1){
 			location++;
 		}
 		return location;

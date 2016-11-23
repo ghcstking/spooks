@@ -52,7 +52,7 @@ public class Items extends EventAlamAndSharon{
 	}
 	private static void printDaMap(){
 		String pic[][] = ghostMap;
-		for(int y = ghostMap.length-1; y > 0; y--){
+		for(int y = ghostMap.length-1; y >= 0; y--){
 			for(int x = 0; x < ghostMap[y].length; x++){
 				if(ghostMap[y][x] == "player"){
 					pic[y][x] = "( X )";
@@ -60,7 +60,7 @@ public class Items extends EventAlamAndSharon{
 						 ghostMap[y][x] == "2" || 
 						 ghostMap[y][x] == "3" || 
 						 ghostMap[y][x] == "4"){
-					pic[y][x] = "( O )";	
+					pic[y][x] = "( "+ghostMap[y][x] +" )";	
 				}else{
 					pic[y][x] = "(   )";						
 				}
