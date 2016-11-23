@@ -145,7 +145,7 @@ public class JasonGenerateField {
 		print("You have died. You are now part of this lovely shrine.");
 		VickiCheckField.ongoing = false;
 		print("");
-		CaveExplorer.main(null);
+		System.exit(1);
 	}
 	
 	public static void print(String input) {

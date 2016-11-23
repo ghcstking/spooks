@@ -58,7 +58,7 @@ public class EventEdwinAndAlex implements Event {
 		}
 		else{
 			readSequence(LOSE);
-			CaveExplorer.main(null);
+			System.exit(1);
 		}
 	}
 
