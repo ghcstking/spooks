@@ -1,6 +1,7 @@
 package alamAndSharon;
 
 import caveExplorer.CaveExplorer;
+import caveExplorer.CaveRoom;
 import caveExplorer.Inventory;
 
 import java.util.Scanner;
@@ -117,7 +118,7 @@ public class SharonInput extends EventAlamAndSharon{
 				System.out.println("Trump got bored so he went to play golf");
 				
 				// win game here
-				//CaveRoom.event3done = true;
+				CaveRoom.event3done = true;
 				caveExplorer.CaveExplorer.startExploring(true);
 			}	
 		}else{
