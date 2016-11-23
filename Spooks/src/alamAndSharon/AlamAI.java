@@ -44,10 +44,11 @@ public class AlamAI extends EventAlamAndSharon{
 		String[] keys = {"w","a","s","d"};
 		for(int x = 0; x < ghostArray.length; x++){
 			int dir = (int) (4 * Math.random());
+			System.out.println("" + dir);
 			String move = keys[dir];
 			if(ghostArray[x]){
 				if(x == 0){
-					ghostMap[locationRow1][locationCol1] = null;
+					//ghostMap[locationRow1][locationCol1] = null;
 					if(move.equals("w") && locationRow1 > 0 && ghostMap[locationRow1 - 1][locationCol1] == null) locationRow1--;
 					else if(move.equals("a") && locationCol1 > 0 && ghostMap[locationRow1][locationCol1 - 1] == null) locationCol1--;
 					else if(move.equals("s") && locationRow1 < ghostMap.length-1 && ghostMap[locationRow1 + 1][locationCol1] == null) locationRow1++;
@@ -55,7 +56,7 @@ public class AlamAI extends EventAlamAndSharon{
 					ghostMap[locationRow1][locationCol1] = "1";
 				}
 				if(x == 1){
-					ghostMap[locationRow2][locationCol2] = null;
+					//ghostMap[locationRow2][locationCol2] = null;
 					if(move.equals("w") && locationRow2 > 0 && ghostMap[locationRow2 - 1][locationCol2] == null) locationRow2--;
 					else if(move.equals("a") && locationCol2 > 0 && ghostMap[locationRow2][locationCol2 - 1] == null) locationCol2--;
 					else if(move.equals("s") && locationRow2 < ghostMap.length-1 && ghostMap[locationRow2 + 1][locationCol2] == null) locationRow2++;
@@ -63,7 +64,7 @@ public class AlamAI extends EventAlamAndSharon{
 					ghostMap[locationRow2][locationCol2] = "2";
 				}
 				if(x == 2){
-					ghostMap[locationRow3][locationCol3] = null;
+					//ghostMap[locationRow3][locationCol3] = null;
 					if(move.equals("w") && locationRow3 > 0 && ghostMap[locationRow3 - 1][locationCol3] == null) locationRow3--;
 					else if(move.equals("a") && locationCol3 > 0 && ghostMap[locationRow3][locationCol3 - 1] == null) locationCol3--;
 					else if(move.equals("s") && locationRow3 < ghostMap.length-1 && ghostMap[locationRow3 + 1][locationCol3] == null) locationRow3++;
@@ -71,7 +72,7 @@ public class AlamAI extends EventAlamAndSharon{
 					ghostMap[locationRow3][locationCol3] = "3";
 				}
 				if(x == 3){
-					ghostMap[locationRow4][locationCol4] = null;
+					//ghostMap[locationRow4][locationCol4] = null;
 					if(move.equals("w") && locationRow4 > 0 && ghostMap[locationRow4 - 1][locationCol4] == null) locationRow4--;
 					else if(move.equals("a") && locationCol4 > 0 && ghostMap[locationRow4][locationCol4 - 1] == null) locationCol4--;
 					else if(move.equals("s") && locationRow4 < ghostMap.length-1 && ghostMap[locationRow4 + 1][locationCol4] == null) locationRow4++;
