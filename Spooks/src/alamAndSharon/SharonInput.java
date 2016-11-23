@@ -34,10 +34,9 @@ public class SharonInput extends EventAlamAndSharon{
 			System.out.println("You can only enter " + "'w','a','s', or 'd'");
 			input = CaveExplorer.in.nextLine();
 		}
-		
-		moveThePlayer(input);
-		
+		//move ghost then players
 		AlamAI.moveDaGhost();
+		moveThePlayer(input);
 		playerCheckRoom(playerRow,playerCol);
 	}
 
@@ -120,9 +119,12 @@ public class SharonInput extends EventAlamAndSharon{
 				// win game here
 				CaveRoom.event3done = true;
 				CaveExplorer.inventory.setMap(true);
+				CaveExplorer.inventory.updateMap();
 				caveExplorer.CaveExplorer.startExploring(true);
 			}	
 		}else{
+			playerRowCurrent = playerRow;
+			playerColCurrent = playerCol;
 			System.out.println("You are restricted from leaving this map.");
 		}
 		//checks for nearby ghost and alerts player
@@ -134,7 +136,7 @@ public class SharonInput extends EventAlamAndSharon{
 
 //check if ghost are active before then checking if they over lap
 	private static boolean isRoomFull() {
-		if (ghostMap[playerRow][playerCol] != null){
+		if (ghostMap[playerRowCurrent][playerColCurrent] != null){
 			return true;
 		}	 
 			return false;

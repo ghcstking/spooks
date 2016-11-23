@@ -6,7 +6,7 @@ import caveExplorer.CaveExplorer;
 // Code by Alam
 public class Items extends EventAlamAndSharon{
 	//checks to see how many turns are available
-	public static int turns = 10;
+	public static int turns = 50;
 	
 	//items player can have
 	public static int invisibilityCloak = 0;
