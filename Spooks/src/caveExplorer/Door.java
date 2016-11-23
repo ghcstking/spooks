@@ -8,7 +8,7 @@ public class Door {
 	
 	public Door() {
 		locked = false;
-		open = true;
+		open = false;
 		description = "Passage";
 		details = "";
 	}

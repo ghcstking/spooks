@@ -3,6 +3,7 @@ package jasonAndVicki;
 import java.util.Scanner;
 
 import caveExplorer.CaveExplorer;
+import caveExplorer.CaveRoom;
 import caveExplorer.Inventory;
 
 public class VickiCheckField {
@@ -37,7 +38,7 @@ public class VickiCheckField {
 				CaveExplorer.inventory.setMap(true);
 			}
 		}
-		Inventory.exitKey++;
+		CaveRoom.event1done = true;
 		return ongoing;
 	}
 	

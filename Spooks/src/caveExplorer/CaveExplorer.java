@@ -68,7 +68,6 @@ public class CaveExplorer {
 		caves[2][5].setConnection(CaveRoom.SOUTH, caves[3][5], new Door());
 		caves[2][6].setConnection(CaveRoom.EAST, caves[2][7], new Door());
 		caves[2][6].setConnection(CaveRoom.SOUTH, caves[3][6], new Door());
-		caves[2][7].setConnection(CaveRoom.SOUTH, caves[3][7], new Door());
 		caves[3][0].setConnection(CaveRoom.SOUTH, caves[4][0], new Door());
 		caves[3][1].setConnection(CaveRoom.EAST, caves[3][2], new Door());
 		caves[3][2].setConnection(CaveRoom.EAST, caves[3][3], new Door());
@@ -80,7 +79,6 @@ public class CaveExplorer {
 		caves[3][5].setConnection(CaveRoom.EAST, caves[3][6], new Door());
 		caves[3][6].setConnection(CaveRoom.EAST, caves[3][7], new Door());
 		caves[3][6].setConnection(CaveRoom.SOUTH, caves[4][6], new Door());
-		caves[3][7].setConnection(CaveRoom.SOUTH, caves[4][7], new Door());
 		caves[4][0].setConnection(CaveRoom.EAST, caves[4][1], new Door());
 		caves[4][2].setConnection(CaveRoom.EAST, caves[4][3], new Door());
 		caves[4][3].setConnection(CaveRoom.EAST, caves[4][4], new Door());

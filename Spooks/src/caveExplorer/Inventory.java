@@ -4,8 +4,9 @@ public class Inventory {
 
 	private boolean hasMap;
 	private String map;
-	static boolean hasKey = false;
-	public static int keycount = 1;
+	public static boolean hasKey = false;
+	public static boolean encounteredFinalDoor = false;
+	public static int keycount = 0;
 	public static int exitKey = 0;
 	
 	
@@ -56,16 +57,21 @@ public class Inventory {
 	}
 
 	public String getDescription() {
-		if(keycount > 0 || exitKey > 0){
+		if(encounteredFinalDoor || exitKey < 0){
+			encounteredFinalDoor = true;
 			CaveExplorer.print("You currently have " + keycount + " room keys and " + exitKey + " final door keys.");
 		}
+		else if(keycount > 0){
+				CaveExplorer.print("You currently have " + keycount + " room keys.");
+		}
+		
+		
 		if(hasMap){
 			return map;
 		}
 		else{
 			return "There is nothing in your inventory.\n";
 		}
-		
 		
 	}
 	
