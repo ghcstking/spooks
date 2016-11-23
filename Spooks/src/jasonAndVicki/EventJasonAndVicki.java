@@ -13,9 +13,18 @@ public class EventJasonAndVicki implements Event {
                 "'Welcome to the minefield. The rules are as follows: ",
                 "'My 9x9 board is filled with 10 of my friends.'",
                 "'Each tile you turn over tells you how many of my friends are currently next to you.'",
-                "'Your job is to clear the entire board. If you kill one of my friends, you die.", 
+                "'Your job is to clear the entire board. If you kill one of my friends, you die.",
         };
-  
+        
+        public static final String[] SEQ1 = {
+        		"How do you know the secret code?!",
+        		"You manage to evade us... for now...",
+        };
+        
+        public static void endGame() {
+        	readSequence(SEQ1);
+        }
+        
         public void play() {
             readSequence(SEQ);
             CaveExplorer.print("Are you ready?");
