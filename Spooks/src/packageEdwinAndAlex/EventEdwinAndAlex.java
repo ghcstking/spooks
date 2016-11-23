@@ -48,6 +48,7 @@ public class EventEdwinAndAlex implements Event {
 		CaveExplorer.inventory.setMap(false);
 		CaveExplorer.startExploring(false);
 		if(AlexFieldGenerator.startGame()){
+			CaveExplorer.inventory.exitKey++;
 			readSequence(WIN);
 			CaveExplorer.inventory.setMap(true);
 			CaveExplorer.startExploring(true);
