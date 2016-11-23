@@ -10,7 +10,7 @@ public class JasonEgg implements Event {
             "The chairs are broken, the table crooked, and the curtains rotten",
             "However, on the dusty crooked table, there sits an black oval",
             "Upon closer inspection, you realize its an egg.",
-            "An black egg? That's very strange...",
+            "A black egg? That's very strange...",
             "Besides, why is there a perfect,intact egg in this haunted house anyways?",
             "Who knows, perhaps this bizarre egg will prove useful in your exploration of this house..."
     };

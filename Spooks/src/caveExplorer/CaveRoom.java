@@ -167,10 +167,17 @@ public class CaveRoom {
 		if(CaveExplorer.currentRoom == CaveExplorer.caves[4][0] && !event2done){
 			CaveExplorer.currentRoom.doors[1].setLock(true);
 		}
-		if(CaveExplorer.currentRoom == CaveExplorer.caves[4][5] && !event3done){
+		if(CaveExplorer.currentRoom == CaveExplorer.caves[4][4] && !event3done){
 			CaveExplorer.currentRoom.doors[1].setLock(true);
 		}
 		
+		if(CaveExplorer.currentRoom == CaveExplorer.caves[0][4] && !event3done){
+			CaveExplorer.currentRoom.doors[1].setLock(true);
+			CaveExplorer.currentRoom.doors[2].setLock(true);
+			CaveExplorer.currentRoom.doors[3].setLock(true);
+			Inventory.keycount = 0;
+			
+		}
 		
 		
 	}
