@@ -117,7 +117,7 @@ public class SharonInput extends EventAlamAndSharon{
 				System.out.println("Trump got bored so he went to play golf");
 				
 				// win game here
-				Inventory.exitKey ++;
+				//CaveRoom.event3done = true;
 				caveExplorer.CaveExplorer.startExploring(true);
 			}	
 		}else{
