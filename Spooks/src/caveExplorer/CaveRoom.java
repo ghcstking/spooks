@@ -10,7 +10,7 @@ public class CaveRoom {
 	private String defaultContents;
 	
 	private boolean event1done = false;
-	private boolean event2done = false;
+	public static boolean event2done = false;
 	private boolean event3done = false;
 
 	private CaveRoom[] borderingRooms;

@@ -1,6 +1,7 @@
 package packageEdwinAndAlex;
 
 import caveExplorer.CaveExplorer;
+import caveExplorer.CaveRoom;
 import caveExplorer.Event;
 
 public class EventEdwinAndAlex implements Event {
@@ -48,7 +49,7 @@ public class EventEdwinAndAlex implements Event {
 		CaveExplorer.inventory.setMap(false);
 		CaveExplorer.startExploring(false);
 		if(AlexFieldGenerator.startGame()){
-			CaveExplorer.inventory.exitKey++;
+			CaveRoom.event2done = true;
 			//
 			readSequence(WIN);
 			CaveExplorer.inventory.setMap(true);
