@@ -28,7 +28,7 @@ public class JasonEgg implements Event {
             "'Yooooo, what's up my eggo broooooo' ",
             "'What's crackingggggg?",
             "'Wait, why are you looking at me with such a bad egg-spression?'",
-            "'Yo I'm an talking egg bro how many talkings do you see in a lifetime? Hm? TELL ME. '",
+            "'Yo I'm an talking egg bro how many talking eggs do you see in a lifetime? Hm? TELL ME. '",
             "'I wonder if  you're starting to get the hen-g of my jokes!'",
             "'But like ya know...being a talking egg is tough work you don't even know...blah blah blah blah blah..'",
             "This egg just keeps blubbering on an on, but then you realized: you pick up an Egg-cellent Pun Egg",
