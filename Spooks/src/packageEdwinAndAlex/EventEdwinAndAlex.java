@@ -1,6 +1,7 @@
 package packageEdwinAndAlex;
 
 import caveExplorer.CaveExplorer;
+import caveExplorer.CaveRoom;
 import caveExplorer.Event;
 
 public class EventEdwinAndAlex implements Event {
@@ -37,7 +38,7 @@ public class EventEdwinAndAlex implements Event {
 			"A crevice opens, filled with chicken eggs.",
 			"You fall through to your untimely demise."
 	};
-	
+	//
 	public void play() {
 		readSequence(INTRO);
 		CaveExplorer.print("Are you ready?");
@@ -48,7 +49,7 @@ public class EventEdwinAndAlex implements Event {
 		CaveExplorer.inventory.setMap(false);
 		CaveExplorer.startExploring(false);
 		if(AlexFieldGenerator.startGame()){
-			CaveExplorer.inventory.exitKey++;
+			CaveRoom.event2done = true;
 			//
 			readSequence(WIN);
 			CaveExplorer.inventory.setMap(true);

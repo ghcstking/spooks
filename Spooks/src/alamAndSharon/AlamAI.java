@@ -44,38 +44,43 @@ public class AlamAI extends EventAlamAndSharon{
 		String[] keys = {"w","a","s","d"};
 		for(int x = 0; x < ghostArray.length; x++){
 			int dir = (int) (4 * Math.random());
+				System.out.println("dir " + x + " is :" + dir);
 			String move = keys[dir];
 			if(ghostArray[x]){
 				if(x == 0){
 					ghostMap[locationRow1][locationCol1] = null;
-					if(move.equals("w") && locationRow1 > 0 && ghostMap[locationRow1 - 1][locationCol1] == null) locationRow1--;
-					else if(move.equals("a") && locationCol1 > 0 && ghostMap[locationRow1][locationCol1 - 1] == null) locationCol1--;
-					else if(move.equals("s") && locationRow1 < ghostMap.length-1 && ghostMap[locationRow1 + 1][locationCol1] == null) locationRow1++;
-					else if(move.equals("d") && locationCol1 < ghostMap[locationRow1].length-1 && ghostMap[locationRow1][locationCol1 + 1] == null) locationCol1++;
+					if(move.equals("w") && locationRow1 >= 0 && ghostMap[locationRow1 - 1][locationCol1] == null) locationRow1--;
+					else if(move.equals("a") && locationCol1 >= 0 && ghostMap[locationRow1][locationCol1 - 1] == null) locationCol1--;
+					else if(move.equals("s") && locationRow1 < ghostMap.length && ghostMap[locationRow1 + 1][locationCol1] == null) locationRow1++;
+					else if(move.equals("d") && locationCol1 < ghostMap[locationRow1].length && ghostMap[locationRow1][locationCol1 + 1] == null) locationCol1++;
+						System.out.println("ghost 1 location value is:" + ghostMap[locationRow1][locationCol1]);
 					ghostMap[locationRow1][locationCol1] = "1";
 				}
 				if(x == 1){
 					ghostMap[locationRow2][locationCol2] = null;
-					if(move.equals("w") && locationRow2 > 0 && ghostMap[locationRow2 - 1][locationCol2] == null) locationRow2--;
-					else if(move.equals("a") && locationCol2 > 0 && ghostMap[locationRow2][locationCol2 - 1] == null) locationCol2--;
-					else if(move.equals("s") && locationRow2 < ghostMap.length-1 && ghostMap[locationRow2 + 1][locationCol2] == null) locationRow2++;
-					else if(move.equals("d") && locationCol2 < ghostMap[locationRow2].length-1 && ghostMap[locationRow2][locationCol2 + 1] == null) locationCol2++;
+					if(move.equals("w") && locationRow2 >= 0 && ghostMap[locationRow2 - 1][locationCol2] == null) locationRow2--;
+					else if(move.equals("a") && locationCol2 >= 0 && ghostMap[locationRow2][locationCol2 - 1] == null) locationCol2--;
+					else if(move.equals("s") && locationRow2 < ghostMap.length && ghostMap[locationRow2 + 1][locationCol2] == null) locationRow2++;
+					else if(move.equals("d") && locationCol2 < ghostMap[locationRow2].length && ghostMap[locationRow2][locationCol2 + 1] == null) locationCol2++;
+						System.out.println("ghost 2 location value is:" + ghostMap[locationRow1][locationCol1]);
 					ghostMap[locationRow2][locationCol2] = "2";
 				}
 				if(x == 2){
 					ghostMap[locationRow3][locationCol3] = null;
-					if(move.equals("w") && locationRow3 > 0 && ghostMap[locationRow3 - 1][locationCol3] == null) locationRow3--;
-					else if(move.equals("a") && locationCol3 > 0 && ghostMap[locationRow3][locationCol3 - 1] == null) locationCol3--;
-					else if(move.equals("s") && locationRow3 < ghostMap.length-1 && ghostMap[locationRow3 + 1][locationCol3] == null) locationRow3++;
-					else if(move.equals("d") && locationCol3 < ghostMap[locationRow3].length-1 && ghostMap[locationRow3][locationCol3 + 1] == null) locationCol3++;
+					if(move.equals("w") && locationRow3 >= 0 && ghostMap[locationRow3 - 1][locationCol3] == null) locationRow3--;
+					else if(move.equals("a") && locationCol3 >= 0 && ghostMap[locationRow3][locationCol3 - 1] == null) locationCol3--;
+					else if(move.equals("s") && locationRow3 < ghostMap.length && ghostMap[locationRow3 + 1][locationCol3] == null) locationRow3++;
+					else if(move.equals("d") && locationCol3 < ghostMap[locationRow3].length && ghostMap[locationRow3][locationCol3 + 1] == null) locationCol3++;
+						System.out.println("ghost 3 location value is:" + ghostMap[locationRow1][locationCol1]);
 					ghostMap[locationRow3][locationCol3] = "3";
 				}
 				if(x == 3){
 					ghostMap[locationRow4][locationCol4] = null;
-					if(move.equals("w") && locationRow4 > 0 && ghostMap[locationRow4 - 1][locationCol4] == null) locationRow4--;
-					else if(move.equals("a") && locationCol4 > 0 && ghostMap[locationRow4][locationCol4 - 1] == null) locationCol4--;
-					else if(move.equals("s") && locationRow4 < ghostMap.length-1 && ghostMap[locationRow4 + 1][locationCol4] == null) locationRow4++;
-					else if(move.equals("d") && locationCol4 < ghostMap[locationRow4].length-1 && ghostMap[locationRow4][locationCol4 + 1] == null) locationCol4++;
+					if(move.equals("w") && locationRow4 >= 0 && ghostMap[locationRow4 - 1][locationCol4] == null) locationRow4--;
+					else if(move.equals("a") && locationCol4 >= 0 && ghostMap[locationRow4][locationCol4 - 1] == null) locationCol4--;
+					else if(move.equals("s") && locationRow4 < ghostMap.length && ghostMap[locationRow4 + 1][locationCol4] == null) locationRow4++;
+					else if(move.equals("d") && locationCol4 < ghostMap[locationRow4].length && ghostMap[locationRow4][locationCol4 + 1] == null) locationCol4++;
+						System.out.println("ghost 4 location value is:" + ghostMap[locationRow1][locationCol1]);
 					ghostMap[locationRow4][locationCol4] = "4";
 					
 				}

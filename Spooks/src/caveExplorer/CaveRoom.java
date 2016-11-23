@@ -11,6 +11,7 @@ public class CaveRoom {
 	private String contents;
 	private String defaultContents;
 	
+
 	public static final String[] SEQ = {
 		"You start to move forward to open the next door and continue on ur path.",
 		"When you reach the center however...THE DOORS ALL SIMULTANEOUSLY LOCK SHUT.",
