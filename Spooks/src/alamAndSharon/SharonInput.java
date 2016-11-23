@@ -106,11 +106,9 @@ public class SharonInput extends EventAlamAndSharon{
 					System.out.println("But then you realized that you can go through the, and walked away");
 					
 					//loose game here
+					CaveExplorer.inventory.setMap(true);
+
 					CaveExplorer.inventory.updateMap();
-					caveExplorer.CaveExplorer.startExploring(true);
-					if(isMapReal){
-						CaveExplorer.inventory.setMap(true);
-					}
 					caveExplorer.CaveExplorer.startExploring(true);
 				}
 			}
@@ -125,10 +123,8 @@ public class SharonInput extends EventAlamAndSharon{
 				// win game here
 				CaveRoom.event3done = true;
 				CaveExplorer.inventory.updateMap();
+				CaveExplorer.inventory.setMap(true);
 				caveExplorer.CaveExplorer.startExploring(true);
-				if(isMapReal){
-					CaveExplorer.inventory.setMap(true);
-				}
 			}	
 		}else{
 			playerRowCurrent = playerRow;
