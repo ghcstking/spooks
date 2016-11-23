@@ -17,7 +17,7 @@ public class EventAlamAndSharon implements Event {
 	public static final String[] Win = {"Horrayyy!!You have escaped alive!!"};
 	public static final String[] Lost = {"Game Over. You've been found."};
 	public static Scanner in;
-	
+	public static boolean isMapReal;
 	
 	//Both ghost and player need a map to compare locations.
 	public static String[][] playerMap= new String[10][10];
@@ -30,6 +30,9 @@ public class EventAlamAndSharon implements Event {
 		CaveExplorer.print(" - - - Press enter - - - ");
 		CaveExplorer.in.nextLine();
 		CaveExplorer.print("SURIVE!");
+		if (CaveExplorer.inventory.checkMapStatus()){
+			isMapReal = true;
+		}
 		CaveExplorer.inventory.setMap(false);
         CaveExplorer.startExploring(false);
 		//printGrid();

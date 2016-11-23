@@ -88,4 +88,7 @@ public class Inventory {
 	public void setMap(boolean b){
 		hasMap = b;
 	}
+	public boolean checkMapStatus(){
+		return hasMap;
+	}
 }
