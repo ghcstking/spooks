@@ -43,8 +43,8 @@ public class Items extends EventAlamAndSharon{
 	
 	//uses flash light this function prints the map
 	public static void useFlashLight(String[][] pic){
-		if(flashlight > 0){
-			for(int y = 0; y < pic.length; y++){
+		if(flashlight > 0 && cheatMap == false){
+			for(int y = pic.length-1; y > 0; y--){
 				for(int x = 0; x < pic[y].length; x++){
 					if(y == SharonInput.playerRow && x == SharonInput.playerCol){
 						pic[y][x] = "|X|";
@@ -70,24 +70,15 @@ public class Items extends EventAlamAndSharon{
 	//check to see if ghost are near by
 	public static void sensor(){
 		int sensor = 0;
-		if(AlamAI.ghost1 && (AlamAI.locationRow1 >= SharonInput.playerRow-1 && AlamAI.locationRow1 <= SharonInput.playerRow+1)){
-			if(AlamAI.locationCol1 >= SharonInput.playerCol-1 && AlamAI.locationCol1 <= SharonInput.playerCol+1){
-				sensor++;
-			}
-		}
-		if(AlamAI.ghost2 && (AlamAI.locationRow2 >= SharonInput.playerRow-1 && AlamAI.locationRow2 <= SharonInput.playerRow+1)){
-			if(AlamAI.locationCol2 >= SharonInput.playerCol-1 && AlamAI.locationCol2 <= SharonInput.playerCol+1){
-				sensor++;
-			}
-		}
-		if(AlamAI.ghost3 && (AlamAI.locationRow3 >= SharonInput.playerRow-1 && AlamAI.locationRow3 <= SharonInput.playerRow+1)){
-			if(AlamAI.locationCol3 >= SharonInput.playerCol-1 && AlamAI.locationCol3 <= SharonInput.playerCol+1){
-				sensor++;
-			}
-		}
-		if(AlamAI.ghost4 && (AlamAI.locationRow4 >= SharonInput.playerRow-1 && AlamAI.locationRow4 <= SharonInput.playerRow+1)){
-			if(AlamAI.locationCol4 >= SharonInput.playerCol-1 && AlamAI.locationCol4 <= SharonInput.playerCol+1){
-				sensor++;
+		for(int x = 0; x<4; x++){
+			if (AlamAI.ghostArray[x]){
+				String xString = Integer.toString(x);
+				if((ghostMap[SharonInput.playerRow-1][SharonInput.playerCol] == xString && SharonInput.playerRow-1 >= 0) || 
+				   (ghostMap[SharonInput.playerRow+1][SharonInput.playerCol] == xString && SharonInput.playerRow+1 < ghostMap.length) ||
+				   (ghostMap[SharonInput.playerRow][SharonInput.playerCol-1] == xString && SharonInput.playerCol-1 >= 0) ||
+				   (ghostMap[SharonInput.playerRow][SharonInput.playerCol+1] == xString && SharonInput.playerCol+1 < ghostMap[SharonInput.playerRow].length)){
+					sensor++;
+				}
 			}
 		}
 		//check to see if flash light is needed
@@ -100,11 +91,12 @@ public class Items extends EventAlamAndSharon{
 			useFlashLight(ghostMap);
 		}
 	}
+	// cheat code runs separate from the actual code as of now
 	public static void cheatCodes(int cheat){
 		turns ++;
 		if(cheat == 1){
 			turns = 0;
-			System.out.println("Your game will end next turn ... \n hopefully a ghost hits you >:( \n cheater");
+			System.out.println("Your game will end after the next turn ... \n hopefully a ghost hits you >:( \n cheater");
 		}else if(cheat == 2){
 			invisibilityCloak += 10;
 			System.out.println("You gave yourself invisibliity cloaks");
@@ -118,22 +110,24 @@ public class Items extends EventAlamAndSharon{
 	}
 	
 	public static void cheatMap(String[][] pic){
-		for(int y = pic.length-1; y > 0; y--){
-			for(int x = 0; x < pic[y].length; x++){
-				if(y == SharonInput.playerRow && x == SharonInput.playerCol){
-					pic[y][x] = "|X|";
-				}else if((AlamAI.ghost1 && (y == AlamAI.locationRow1 && x == AlamAI.locationCol1)) ||
-						 (AlamAI.ghost2 && (y == AlamAI.locationRow2 && x == AlamAI.locationCol2)) ||
-						 (AlamAI.ghost3 && (y == AlamAI.locationRow3 && x == AlamAI.locationCol3)) ||
-						 (AlamAI.ghost4 && (y == AlamAI.locationRow4 && x == AlamAI.locationCol4))
-						){
-					pic[y][x] = "|O|";	
-				}else{
-					pic[y][x] = "|_|";						
+		if(cheatMap){
+			for(int y = pic.length-1; y > 0; y--){
+				for(int x = 0; x < pic[y].length; x++){
+					if(y == SharonInput.playerRow && x == SharonInput.playerCol){
+						pic[y][x] = "|X|";
+					}else if((AlamAI.ghost1 && (y == AlamAI.locationRow1 && x == AlamAI.locationCol1)) ||
+							 (AlamAI.ghost2 && (y == AlamAI.locationRow2 && x == AlamAI.locationCol2)) ||
+							 (AlamAI.ghost3 && (y == AlamAI.locationRow3 && x == AlamAI.locationCol3)) ||
+							 (AlamAI.ghost4 && (y == AlamAI.locationRow4 && x == AlamAI.locationCol4))
+							){
+						pic[y][x] = "|O|";	
+					}else{
+						pic[y][x] = "|_|";						
+					}
+					System.out.print(pic[y][x]);
 				}
-				System.out.print(pic[y][x]);
+				System.out.println();	
 			}
-			System.out.println();	
 		}
 	}
 }

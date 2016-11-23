@@ -9,7 +9,7 @@ public class AlamAI extends EventAlamAndSharon{
 	public static boolean ghost3 = true;
 	public static boolean ghost4 = true;
 	
-	private static boolean ghostArray[] = {ghost1,ghost2,ghost3,ghost4};
+	public static boolean ghostArray[] = {ghost1,ghost2,ghost3,ghost4};
 	
 	public static int locationRow1 = 1;
 	public static int locationCol1 = 1;
