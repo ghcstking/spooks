@@ -55,21 +55,21 @@ public class Items extends EventAlamAndSharon{
 		for(int y = ghostMap.length-1; y > 0; y--){
 			for(int x = 0; x < ghostMap[y].length; x++){
 				if(ghostMap[y][x] == "player"){
-					pic[y][x] = " X ";
+					pic[y][x] = "( X )";
 				}else if(ghostMap[y][x] == "1" || 
 						 ghostMap[y][x] == "2" || 
 						 ghostMap[y][x] == "3" || 
 						 ghostMap[y][x] == "4"){
-					pic[y][x] = " O ";	
+					pic[y][x] = "( O )";	
 				}else{
-					pic[y][x] = "   ";						
+					pic[y][x] = "("+y+","+x+")";						
 				}
 				System.out.print(pic[y][x]);
 			}
 			System.out.println();	
 		}
 		System.out.println("You get scared and pull out your flashlight");
-		System.out.println("You are the X and the O are the Trumplings");
+		System.out.println("You are the X and the O are the Ghost");
 		
 	}
 
