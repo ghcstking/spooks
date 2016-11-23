@@ -1,6 +1,8 @@
 package alamAndSharon;
 
 import caveExplorer.CaveExplorer;
+import caveExplorer.Inventory;
+
 import java.util.Scanner;
 
 public class SharonInput extends EventAlamAndSharon{
@@ -17,7 +19,7 @@ public class SharonInput extends EventAlamAndSharon{
 	
 	public static void beginPlayer(){
 		while(true){
-			Items.cheatMap(ghostMap);
+			Items.cheatMap();
 			System.out.println("Where would you like to go?.");
 			
 			String response=in.nextLine();
@@ -40,7 +42,7 @@ public class SharonInput extends EventAlamAndSharon{
 
 	
 	private static void moveThePlayer(String dir) {
-		ghostMap[playerRow][playerCol] = null;
+		
 		// "w" move row up
 		if(dir.equals("w")){
 			playerRowCurrent+=1;
@@ -75,10 +77,14 @@ public class SharonInput extends EventAlamAndSharon{
 	}
 	//checks to see if player is able to go to that room & sets the coordinates of the destination.
 	//move player to room given direction.
-	public static void playerCheckRoom(int row,int col) {
+	public static void playerCheckRoom(int row,int col) {	
+		//remove player from 2D array	
+		ghostMap[playerRow][playerCol] = null;
+		
 		//checks for items first
 		//this way you can get a cloak and save yourself if a ghost happens to walk in the room
 		Items.checkForItem();
+		
 		if(isRoomFull()){
 			//checks to see if you have a cloak
 			if(Items.invisibilityCloak > 0){
@@ -96,7 +102,8 @@ public class SharonInput extends EventAlamAndSharon{
 				caveExplorer.CaveExplorer.startExploring(true);
 			}
 		}
-		if(isAvail(playerRowCurrent,EventAlamAndSharon.playerMap.length-1)&& isAvail(playerColCurrent,EventAlamAndSharon.playerMap[0].length-1)){
+		if(isAvail(playerRowCurrent,EventAlamAndSharon.playerMap.length-1)
+		   && isAvail(playerColCurrent,EventAlamAndSharon.playerMap[0].length-1)){
 			playerRow=playerRowCurrent;
 			playerCol=playerColCurrent;
 			// removes a turn from the items class
@@ -109,41 +116,24 @@ public class SharonInput extends EventAlamAndSharon{
 				System.out.println("Trump got bored so he went to play golf");
 				
 				// win game here
+				Inventory.exitKey ++;
 				caveExplorer.CaveExplorer.startExploring(true);
 			}	
 		}else{
 			System.out.println("You are restricted from leaving this map.");
 		}
-		//checks for nearby ghost
-		ghostMap[playerRow][playerCol] = "player";
+		//checks for nearby ghost and alerts player
 		Items.sensor();
-		
+		//adds player back in array
+			ghostMap[playerRow][playerCol] = "player";
 	}
 
 
 //check if ghost are active before then checking if they over lap
 	private static boolean isRoomFull() {
-		if(AlamAI.ghost1){
-			if(AlamAI.locationCol1 == playerCol && AlamAI.locationRow1 == playerRow){
-				return true;
-			}
-		}
-		if(AlamAI.ghost2){
-			if(AlamAI.locationCol2 == playerCol && AlamAI.locationRow2 == playerRow){
-				return true;
-			}
-		}
-		if(AlamAI.ghost3){
-			if(AlamAI.locationCol3 == playerCol && AlamAI.locationRow3 == playerRow){
-				return true;
-			}
-		}
-		if(AlamAI.ghost1){
-			if(AlamAI.locationCol1 == playerCol && AlamAI.locationRow1 == playerRow){
-				return true;
-			}
-		}
-		 
+		if (ghostMap[playerRow][playerCol] != null){
+			return true;
+		}	 
 			return false;
 	}
 	private static boolean isValid(String input) {

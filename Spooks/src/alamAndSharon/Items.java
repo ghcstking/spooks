@@ -41,32 +41,38 @@ public class Items extends EventAlamAndSharon{
 		}
 	}
 	
-	//uses flash light this function prints the map
-	public static void useFlashLight(String[][] pic){
+	//uses flash light and calls print map
+	public static void useFlashLight(){
 		if(flashlight > 0 && cheatMap == false){
-			for(int y = pic.length-1; y > 0; y--){
-				for(int x = 0; x < pic[y].length; x++){
-					if(y == SharonInput.playerRow && x == SharonInput.playerCol){
-						pic[y][x] = "|X|";
-					}else if((AlamAI.ghost1 && (y == AlamAI.locationRow1 && x == AlamAI.locationCol1)) ||
-							 (AlamAI.ghost2 && (y == AlamAI.locationRow2 && x == AlamAI.locationCol2)) ||
-							 (AlamAI.ghost3 && (y == AlamAI.locationRow3 && x == AlamAI.locationCol3)) ||
-							 (AlamAI.ghost4 && (y == AlamAI.locationRow4 && x == AlamAI.locationCol4))
-							){
-						pic[y][x] = "|O|";	
-					}else{
-						pic[y][x] = "|_|";						
-					}
-					System.out.print(pic[y][x]);
-				}
-				System.out.println();	
-			}
-			System.out.println("You get scared and pull out your flashlight");
-			System.out.println("You are the X and the O are the Trumplings");
+			//calls map printer
+			printDaMap();
 			System.out.println("You have lost a flash light");
 			flashlight --;
 		}
 	}
+	private static void printDaMap(){
+		String pic[][] = ghostMap;
+		for(int y = ghostMap.length-1; y > 0; y--){
+			for(int x = 0; x < ghostMap[y].length; x++){
+				if(ghostMap[y][x] == "player"){
+					pic[y][x] = " X ";
+				}else if(ghostMap[y][x] == "1" || 
+						 ghostMap[y][x] == "2" || 
+						 ghostMap[y][x] == "3" || 
+						 ghostMap[y][x] == "4"){
+					pic[y][x] = " O ";	
+				}else{
+					pic[y][x] = "   ";						
+				}
+				System.out.print(pic[y][x]);
+			}
+			System.out.println();	
+		}
+		System.out.println("You get scared and pull out your flashlight");
+		System.out.println("You are the X and the O are the Trumplings");
+		
+	}
+
 	//check to see if ghost are near by
 	public static void sensor(){
 		int sensor = 0;
@@ -84,50 +90,34 @@ public class Items extends EventAlamAndSharon{
 		//check to see if flash light is needed
 		if(sensor == 1 || sensor == 2){
 			System.out.println("You feel something is lurking nearby");
-			useFlashLight(ghostMap);
+			useFlashLight();
 		}
 		if(sensor >= 3){
 			System.out.println("You feel surrounded");
-			useFlashLight(ghostMap);
+			useFlashLight();
 		}
 	}
-	// cheat code runs separate from the actual code as of now
+	// cheat code activator
 	public static void cheatCodes(int cheat){
 		turns ++;
 		if(cheat == 1){
 			turns = 0;
-			System.out.println("Your game will end after the next turn ... \n hopefully a ghost hits you >:( \n cheater");
+			System.out.println("Your game will end after the next turn ... \n Hopefully a ghost hits you >:( \n cheater");
 		}else if(cheat == 2){
 			invisibilityCloak += 10;
-			System.out.println("You gave yourself invisibliity cloaks");
+			System.out.println("You gave yourself 10 invisibliity cloaks \n Sooner or later you'll run out");
 		}else if(cheat == 3){
 			flashlight += 10;
-			System.out.println("You gave yourself flashlight");
+			System.out.println("You gave yourself 10 flashlights \n Oh so you're scared huh?");
 		}else if(cheat == 4){
 			cheatMap = true;
-			System.out.println("You gave yourself a map");
+			System.out.println("You gave yourself a map \n I hate cheaters just play the game >:(");
 		}
 	}
-	
-	public static void cheatMap(String[][] pic){
+	//Calls every round if cheat code is active then player can see the map
+	public static void cheatMap() {
 		if(cheatMap){
-			for(int y = pic.length-1; y > 0; y--){
-				for(int x = 0; x < pic[y].length; x++){
-					if(y == SharonInput.playerRow && x == SharonInput.playerCol){
-						pic[y][x] = "|X|";
-					}else if((AlamAI.ghost1 && (y == AlamAI.locationRow1 && x == AlamAI.locationCol1)) ||
-							 (AlamAI.ghost2 && (y == AlamAI.locationRow2 && x == AlamAI.locationCol2)) ||
-							 (AlamAI.ghost3 && (y == AlamAI.locationRow3 && x == AlamAI.locationCol3)) ||
-							 (AlamAI.ghost4 && (y == AlamAI.locationRow4 && x == AlamAI.locationCol4))
-							){
-						pic[y][x] = "|O|";	
-					}else{
-						pic[y][x] = "|_|";						
-					}
-					System.out.print(pic[y][x]);
-				}
-				System.out.println();	
-			}
+			printDaMap();
 		}
 	}
 }
