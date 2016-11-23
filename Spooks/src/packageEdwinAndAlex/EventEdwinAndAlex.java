@@ -36,7 +36,6 @@ public class EventEdwinAndAlex implements Event {
 	public static final String[]LOSE = {
 			"'What a pity.'",
 			"A crevice opens, filled with chicken eggs.",
-			"You fall through to your untimely demise."
 	};
 	//
 	public void play() {
@@ -58,6 +57,8 @@ public class EventEdwinAndAlex implements Event {
 		}
 		else{
 			readSequence(LOSE);
+			CaveExplorer.print("You fall through to your untimely demise.");
+			CaveExplorer.startExploring(false);
 			System.exit(1);
 		}
 	}
