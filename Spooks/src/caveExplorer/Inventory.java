@@ -2,7 +2,9 @@ package caveExplorer;
 
 public class Inventory {
 
-	private boolean hasMap;
+	public static boolean hasMap;
+	public static boolean mapBefore = false;
+
 	private String map;
 	public static boolean hasKey = false;
 	public static boolean encounteredFinalDoor = false;
@@ -84,6 +86,7 @@ public class Inventory {
 	public void setHasKey(boolean hasKey) {
 		this.hasKey = hasKey;
 	}
+	
 
 	public void setMap(boolean b){
 		hasMap = b;

@@ -123,8 +123,13 @@ public class SharonInput extends EventAlamAndSharon{
 				// win game here
 				CaveRoom.event3done = true;
 				CaveExplorer.inventory.updateMap();
-				CaveExplorer.inventory.setMap(true);
-				caveExplorer.CaveExplorer.startExploring(true);
+				if(Inventory.mapBefore == false){
+					CaveExplorer.startExploring(true);
+				}
+				else{
+					CaveExplorer.inventory.setMap(true);
+					caveExplorer.CaveExplorer.startExploring(true);
+				}
 			}	
 		}else{
 			playerRowCurrent = playerRow;

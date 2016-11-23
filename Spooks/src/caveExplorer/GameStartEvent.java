@@ -21,6 +21,7 @@ public class GameStartEvent implements Event {
 			CaveExplorer.print("I mean... you have to say yes. Or die here.");
 		}
 		readSequence(SEQ_2);
+		Inventory.mapBefore = true;
 		CaveExplorer.inventory.setMap(true);
 	}
 
