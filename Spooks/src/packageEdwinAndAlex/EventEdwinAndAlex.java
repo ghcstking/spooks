@@ -38,7 +38,7 @@ public class EventEdwinAndAlex implements Event {
 			"A crevice opens, filled with chicken eggs.",
 			"You fall through to your untimely demise."
 	};
-	
+	//
 	public void play() {
 		readSequence(INTRO);
 		CaveExplorer.print("Are you ready?");
