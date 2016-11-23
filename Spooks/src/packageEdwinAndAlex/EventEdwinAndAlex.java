@@ -53,6 +53,7 @@ public class EventEdwinAndAlex implements Event {
 			//
 			readSequence(WIN);
 			CaveExplorer.inventory.setMap(true);
+			CaveExplorer.inventory.updateMap();
 			CaveExplorer.startExploring(true);
 		}
 		else{

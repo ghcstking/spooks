@@ -203,7 +203,7 @@ public class CaveRoom {
 		if(CaveExplorer.currentRoom == CaveExplorer.caves[3][6]){
 			CaveExplorer.currentRoom.doors[1].setLock(true);
 		}
-		
+			
 	}
 	
 	public boolean checkKeys(){
@@ -270,7 +270,7 @@ public class CaveRoom {
 			CaveExplorer.print("You insert the three special keys you obtained through your ordeals." 
 					+ "You have finally escaped the spooky house, and the dawn of day is now coming."
 					+ "Congratulations, you've won. Today, at least."
-					+"-----You Live!!!!!!-----");
+					+"-----You Live!!!!!!-----");		
 			System.exit(1);
 		}
 	}
