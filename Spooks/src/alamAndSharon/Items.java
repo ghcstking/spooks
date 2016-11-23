@@ -85,7 +85,7 @@ public class Items extends EventAlamAndSharon{
 	public static void sensor(){
 		String ints[] ={"1","2","3","4"};
 		int sensorGhost = 0;
-		System.out.println("method runs");
+		//System.out.println("method runs");
 		for(int x = 0; x<4; x++){
 			if (AlamAI.ghostArray[x]){
 				String xString = ints[x];
