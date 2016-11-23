@@ -3,12 +3,10 @@ package jasonAndVicki;
 import java.util.Scanner;
 
 import caveExplorer.CaveExplorer;
+import caveExplorer.Inventory;
 
 public class VickiCheckField {
-	/* TO LOWER CASE
-	 * UNFLAG
-	 * TRY TO MAKE ALL THE ADJACENT NUMBERS SHOW UP WHY ARENT U WORKING
-	 */
+
 	public static Scanner input;
 	public static String row;
 	public static String col;
@@ -18,18 +16,33 @@ public class VickiCheckField {
 	public static String empty = " ";
 	public static int flags = 0;
 	public static int flagCount = 10;
+	public static boolean flag;
 	
 	public static void play() {
 		input = new Scanner(System.in);
 		while(ongoing) {
-			win();
-			if(flag()) {
-				runFlag();
-			}
-			else {
-				converse();
+			converse();
+		}
+	}
+	
+	public static boolean win() {
+		if (flags == 10) {
+			print("You avoid joining the legion of skulls.");
+			ongoing = false;
+			CaveExplorer.inventory.setMap(true);
+		}
+		else {
+			if (!ongoing) {
+				EventJasonAndVicki.endGame();
+				CaveExplorer.inventory.setMap(true);
 			}
 		}
+		Inventory.exitKey++;
+		return ongoing;
+	}
+	
+	public static boolean flag() {
+		return flag;
 	}
 	
 	public static void runFlag() {
@@ -41,39 +54,76 @@ public class VickiCheckField {
 			int trunRow = Integer.parseInt(fRow);
 			int trunCol = Integer.parseInt(fCol);
 			updateFlagCount(trunRow, trunCol);
-			updateMine4(trunRow, trunCol);
 			if(flagCount < 0) {
 				print("You are at " + flagCount + " flags. You must've made a flagging mistake.");
 			}
-			else {
-				print("You have " + flagCount + " flags left.");						
-			}
 		}
 	}
-
-	public static void updateMine4(int r, int c) {
-		JasonGenerateField.mine4[r][c] = true;
-		updateMap(r, c);
-	}
-
-	public static String getInput() {
-		return input.nextLine();
+	
+	public static int updateFlagCount(int r, int c) {
+		if(JasonGenerateField.mine4[r][c]) {
+			if(unflag(r, c)) {
+				unflagCoord(r,c);
+				flagCount++;
+				if(checkIfMine(r,c)) {
+					flags--;
+				}
+			}
+		}
+		else {
+			if(!JasonGenerateField.mine4[r][c]) {
+				JasonGenerateField.mine4[r][c] = true;
+				flagCount--;
+				flags++;
+			}
+		}
+		JasonGenerateField.updateMap(r, c);
+		return flagCount;
 	}
 	
-	public static boolean flag() {
-		print("Flag? Yes or No");
-		if (getInput().equals("Yes")) {
+	public static boolean checkIfMine(int r, int c) {
+		if (JasonGenerateField.mine3[r][c].equals("$") && JasonGenerateField.mine[r][c].equals("X")) {
 			return true;
 		}
 		return false;
 	}
+	
+	public static boolean unflag(int r, int c) {
+		print("Already flagged. Would you like to unflag?");
+		if (getInput().toLowerCase().equals("yes")) {
+			return true;
+		}
+		return false;
+	}
+	
+	public static void unflagCoord(int r, int c) {
+		JasonGenerateField.mine4[r][c] = false;
+	}
+
+	
 	public static void converse() {
-		print("Please enter a row");
-		row = getInput();
-		print("Please enter a column");
-		col = getInput();
-		if (validateInput(row, col)) {
-			checkMines(row, col);
+		if (win()) {
+			print("Flag? Yes or no");
+			String res = getInput();
+			if (res.toLowerCase().equals("yes")) {
+				flag = true;
+				runFlag();
+			}
+			else {
+				if (res.toLowerCase().equals("egg")) {
+					ongoing = false;
+					win();
+				}
+				else {
+					print("Please enter a row");
+					row = getInput();
+					print("Please enter a column");
+					col = getInput();
+					if (validateInput(row, col)) {
+						checkMines(row, col);
+					}
+				}
+			}
 		}
 	}
 	
@@ -92,9 +142,6 @@ public class VickiCheckField {
 				cFound = true;
 			}
 		}
-		if (r.equals("exit") && c.equals(("exit"))) {
-			ongoing = false;
-		}
 		if (rFound && cFound) {
 			check = true;
 		}
@@ -105,32 +152,11 @@ public class VickiCheckField {
 		int trunRow = Integer.parseInt(r);
 		int trunCol = Integer.parseInt(c);
 		if (JasonGenerateField.mine[trunRow][trunCol] == "X") {
-			printFinalField();
+			JasonGenerateField.printFinalField();
 		}
 		else {
-			updateMap(trunRow, trunCol);
+			JasonGenerateField.updateMap(trunRow, trunCol);
 		}
-	}
-	
-	public static void updateMap(int r, int c) {
-		if (JasonGenerateField.mine4[r][c]) {
-			JasonGenerateField.mine3[r][c] = "$";
-		}
-		else {
-			if (JasonGenerateField.mine3[r][c] == JasonGenerateField.mine[r][c] ||
-					JasonGenerateField.mine3[r][c].equals(" ")) {
-				print("Already cleared.");
-			}
-			else {
-				if (JasonGenerateField.mine[r][c].equals("0")) {
-					checkSurrounding(r, c);
-				}
-				else {
-					JasonGenerateField.mine3[r][c] = JasonGenerateField.mine[r][c];
-				}
-			}	
-		}	
-		JasonGenerateField.printField();
 	}
 	
 	public static void checkUp(int r, int c) {
@@ -208,101 +234,55 @@ public class VickiCheckField {
 	public static void printBlankAdjacents() {
 		for (int row = 0; row < JasonGenerateField.mine3.length - 1; row++) {
 			for (int col = 0; col < JasonGenerateField.mine3[row].length - 1; col++) {
-				if (JasonGenerateField.mine3[row][col].equals("?") && JasonGenerateField.mine3[row+1][col].equals(" ")) {
-					JasonGenerateField.mine3[row][col] = JasonGenerateField.mine[row][col];
-				}
-				if (JasonGenerateField.mine3[row][col].equals("?") && JasonGenerateField.mine3[row][col+1].equals(" ")) {
-					JasonGenerateField.mine3[row][col] = JasonGenerateField.mine[row][col];
-				}
-				if (JasonGenerateField.mine3[row][col].equals("?") && JasonGenerateField.mine3[row+1][col+1].equals(" ")) {
-					JasonGenerateField.mine3[row][col] = JasonGenerateField.mine[row][col];
-				}
-				if (row - 1 >= 0 && col - 1 >= 0) {
-					if (JasonGenerateField.mine3[row][col].equals("?") && JasonGenerateField.mine3[row-1][col-1].equals(" ")) {
-						JasonGenerateField.mine3[row][col] = JasonGenerateField.mine[row][col];
-					}
-				}
 				if (row - 1 >= 0) {
-					if (JasonGenerateField.mine3[row][col].equals("?") && JasonGenerateField.mine3[row-1][col].equals(" ")) {
+					if (JasonGenerateField.mine3[row][col].equals("?") && JasonGenerateField.mine3[row-1][col].equals(empty)) {
 						JasonGenerateField.mine3[row][col] = JasonGenerateField.mine[row][col];
 					}
-					if (JasonGenerateField.mine3[row][col].equals("?") && JasonGenerateField.mine3[row-1][col+1].equals(" ")) {
+					if (JasonGenerateField.mine3[row][col].equals("?") && JasonGenerateField.mine3[row-1][col+1].equals(empty)) {
 						JasonGenerateField.mine3[row][col] = JasonGenerateField.mine[row][col];
 					}
 				}
 				if (col - 1 >= 0) {
-					if (JasonGenerateField.mine3[row][col].equals("?") && JasonGenerateField.mine3[row][col-1].equals(" ")) {
+					if (JasonGenerateField.mine3[row][col].equals("?") && JasonGenerateField.mine3[row][col-1].equals(empty)) {
 						JasonGenerateField.mine3[row][col] = JasonGenerateField.mine[row][col];
 					}
-					if (JasonGenerateField.mine3[row][col].equals("?") && JasonGenerateField.mine3[row][col+1].equals(" ")) {
+					if (JasonGenerateField.mine3[row][col].equals("?") && JasonGenerateField.mine3[row][col+1].equals(empty)) {
 						JasonGenerateField.mine3[row][col] = JasonGenerateField.mine[row][col];
 					}
-					if (JasonGenerateField.mine3[row][col].equals("?") && JasonGenerateField.mine3[row+1][col+1].equals(" ")) {
+					if (JasonGenerateField.mine3[row][col].equals("?") && JasonGenerateField.mine3[row+1][col+1].equals(empty)) {
 						JasonGenerateField.mine3[row][col] = JasonGenerateField.mine[row][col];
 					}
+				}
+				if (row - 1 >= 0 && col - 1 >= 0) {
+					if (JasonGenerateField.mine3[row][col].equals("?") && JasonGenerateField.mine3[row-1][col-1].equals(empty)) {
+						JasonGenerateField.mine3[row][col] = JasonGenerateField.mine[row][col];
+					}
+				}
+				if (JasonGenerateField.mine3[row][col].equals("?") && JasonGenerateField.mine3[row+1][col].equals(empty)) {
+					JasonGenerateField.mine3[row][col] = JasonGenerateField.mine[row][col];
+				}
+				if (JasonGenerateField.mine3[row][col].equals("?") && JasonGenerateField.mine3[row][col+1].equals(empty)) {
+					JasonGenerateField.mine3[row][col] = JasonGenerateField.mine[row][col];
+				}
+				if (JasonGenerateField.mine3[row][col].equals("?") && JasonGenerateField.mine3[row+1][col+1].equals(empty)) {
+					JasonGenerateField.mine3[row][col] = JasonGenerateField.mine[row][col];
 				}
 			}
 		}
 		for (int row = 0; row < JasonGenerateField.mine3.length; row++) {
 			for (int col = 0; col < JasonGenerateField.mine3[row].length; col++) {
 				if (JasonGenerateField.mine3[row][col].equals("0")) {
-					JasonGenerateField.mine3[row][col] = " ";
+					JasonGenerateField.mine3[row][col] = empty;
 				}
 			}
 		}
 	}
 	
-	public static void printFinalField() {
-		for (int row = 0; row < JasonGenerateField.mine.length; row++) {
-			for (int col = 0; col < JasonGenerateField.mine[row].length; col++) {
-				JasonGenerateField.mine3[row][col] = JasonGenerateField.mine[row][col];
-			}
-		}
-		JasonGenerateField.printField();
-		print("You have died. You are now part of this lovely shrine.");
-		ongoing = false;
-		print("");
-		CaveExplorer.main(null);
-	}
-	
-	public static int updateFlagCount(int r, int c) {
-		if (JasonGenerateField.mine3[r][c].equals("$") && unflag(r,c)) {
-			updateMap(r,c);
-		}
-		else {
-			if (checkIfMine(r,c)) {
-				flags++;
-			}
-			flagCount--;
-		}
-		return flagCount;
-	}
-	
-	public static boolean checkIfMine(int r, int c) {
-		if (JasonGenerateField.mine3[r][c].equals("$") && JasonGenerateField.mine[r][c].equals("X")) {
-			return true;
-		}
-		return false;
-	}
-	
-	public static boolean unflag(int r, int c) {
-		print("Already flagged. Would you like to unflag?");
-		if (getInput().equals("Yes")) {
-			return true;
-		}
-		return false;
-	}
-	
-	public static boolean win() {
-		if (flags == 10) {
-			print("You avoid joining the legion of skulls.");
-			ongoing = false;
-			CaveExplorer.inventory.setMap(true);
-		}
-		return false;
-	}
-	
 	public static void print(String input) {
 		System.out.println(input);
+	}
+	
+	public static String getInput() {
+		return input.nextLine();
 	}
 }
