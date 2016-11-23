@@ -265,8 +265,8 @@ public class CaveRoom {
 		
 		CaveExplorer.print("A gigantic door stands before you. It is locked, and there are three enormous keyholes visible on the door. "
 				+ "\n Maybe you need three special keys to open this door..." );
-			
-		if(dir == EAST || Inventory.exitKey == 3){
+		Inventory.encounteredFinalDoor = true;
+		if(dir == EAST && Inventory.exitKey == 3){
 			CaveExplorer.print("You insert the three special keys you obtained through your ordeals." 
 					+ "You have finally escaped the spooky house, and the dawn of day is now coming."
 					+ "Congratulations, you've won. Today, at least."
