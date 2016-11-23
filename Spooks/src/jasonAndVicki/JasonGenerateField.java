@@ -1,5 +1,7 @@
 package jasonAndVicki;
 
+import caveExplorer.CaveExplorer;
+
 public class JasonGenerateField {
 	public static String[][] mine;
 	// ACTUAL ARRAY
@@ -8,6 +10,7 @@ public class JasonGenerateField {
 	public static String[][] mine3;
 	// FAKE ARRAY
 	public static boolean[][] mine4;
+	// FLAGGED ARRAY
 	public static String map;
 	
 	public static void play() {
@@ -15,12 +18,6 @@ public class JasonGenerateField {
 		createMines();
 		matchValues();
 		printField();
-		for (int i = 0; i < mine.length; i++){ 
-			for (int j = 0; j < mine[0].length; j++) {
-				System.out.print(mine[i][j]);
-			}
-			System.out.println();
-		}
 		VickiCheckField.play();
 	}
 	
@@ -105,11 +102,53 @@ public class JasonGenerateField {
                 map += "|  Row " + row + "\n";               
             }
         }
-        System.out.println(map);
-        System.out.println(" 0 1 2 3 4 5 6 7 8");
+        print(map);
+       	print(" 0 1 2 3 4 5 6 7 8");
 	}
 	
 	public static String getContents(String[][] arr, int r, int c) {
 		return arr[r][c];
+	}
+	
+	public static void updateMap(int r, int c) {
+		if (VickiCheckField.flag() && mine4[r][c]) {
+			mine3[r][c] = "$";
+		}
+		else {
+			if (VickiCheckField.flag() && !mine4[r][c]) {
+				mine3[r][c] = "?";
+			}
+			else {
+				if (mine3[r][c] == mine[r][c] || mine3[r][c].equals(VickiCheckField.empty)) {
+					print("Already cleared.");
+				}
+				else {
+					if (mine[r][c].equals("0")) {
+						VickiCheckField.checkSurrounding(r, c);
+					}
+					else {
+						mine3[r][c] = mine[r][c];
+					}
+				}	
+			}
+		}
+		printField();
+	}
+	
+	public static void printFinalField() {
+		for (int row = 0; row < mine.length; row++) {
+			for (int col = 0; col < mine[row].length; col++) {
+				mine3[row][col] = mine[row][col];
+			}
+		}
+		JasonGenerateField.printField();
+		print("You have died. You are now part of this lovely shrine.");
+		VickiCheckField.ongoing = false;
+		print("");
+		CaveExplorer.main(null);
+	}
+	
+	public static void print(String input) {
+		System.out.println(input);
 	}
 }
