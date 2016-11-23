@@ -140,7 +140,7 @@ public class SharonInput extends EventAlamAndSharon{
 
 //check if ghost are active before then checking if they over lap
 	private static boolean isRoomFull() {
-		System.out.println(ghostMap[playerRowCurrent][playerColCurrent]);
+		//System.out.println(ghostMap[playerRowCurrent][playerColCurrent]);
 		if (ghostMap[playerRowCurrent][playerColCurrent] != null){
 			return true;
 		}	 
