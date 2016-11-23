@@ -43,40 +43,40 @@ public class Items extends EventAlamAndSharon{
 	
 	//uses flash light and calls print map
 	public static void useFlashLight(){
-		System.out.println("flash gets called");
-		if(flashlight > 0){
-			//&& cheatMap == false){
-			System.out.println("flash works");
+		if(flashlight > 0 && cheatMap == false){
 			//calls map printer
 			printDaMap();
+			System.out.println("You get scared and pull out your flashlight");
 			System.out.println("You have lost a flash light");
 			flashlight --;
 		}
 	}
+	//prints map
 	private static void printDaMap(){
 		String pic[][] = ghostMap;
 		for(int y = ghostMap.length-1; y >= 0; y--){
 			for(int x = 0; x < ghostMap[y].length; x++){
 				if(ghostMap[y][x] == "player"){
-					pic[y][x] = "( X )";
+					pic[y][x] = " X ";
 				}else if(ghostMap[y][x] == "1" || 
 						 ghostMap[y][x] == "2" || 
 						 ghostMap[y][x] == "3" || 
 						 ghostMap[y][x] == "4"){
-					pic[y][x] = "( G )";	
+					pic[y][x] = " O ";	
 				}else{
-					pic[y][x] = "(   )";						
+					pic[y][x] = "   ";						
 				}
 				System.out.print(pic[y][x]);
 			}
 			System.out.println();	
 		}
+		// fail safe for global being changed
 		for(int i = ghostMap.length-1; i >= 0; i--){
 			for(int j = 0; j < ghostMap[i].length; j++){
 				ghostMap[i][j] = null;
 			}
 		}
-		System.out.println("You get scared and pull out your flashlight");
+		
 		System.out.println("You are the X and the O are the Ghost");
 		
 	}
@@ -128,6 +128,7 @@ public class Items extends EventAlamAndSharon{
 	public static void cheatMap() {
 		if(cheatMap){
 			printDaMap();
+			System.out.println("You get scared and pull out your perma flashlight");
 		}
 	}
 }

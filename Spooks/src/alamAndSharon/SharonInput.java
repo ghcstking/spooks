@@ -101,22 +101,27 @@ public class SharonInput extends EventAlamAndSharon{
 					Items.invisibilityCloak --;
 				// if not game ends
 				}else{
-					System.out.println("Game Over. You've run into Donald Trump.");
-					System.out.println("'I will deport you from this game' he cries as he kickes you out");
-					System.out.println("'It's time to make haunted houses great again!'");
+					System.out.println("Game Over. You've run into the ghost.");
+					System.out.println("'I will eat you alive' as teh ghost swallow you whole");
+					System.out.println("But then you realized that you can go through the, and walked away");
 					
 					//loose game here
+					CaveExplorer.inventory.updateMap();
+					caveExplorer.CaveExplorer.startExploring(true);
+					if(isMapReal){
+						CaveExplorer.inventory.setMap(true);
+					}
 					caveExplorer.CaveExplorer.startExploring(true);
 				}
 			}
 			Items.turns --;
 			if(Items.turns == 3){
-				System.out.println("I will find you, and I will deport you out of this game!");
-				System.out.println("This is gonna be bigly folks, No one tells me I have small hands!");
+				System.out.println("I will find you, and I will eat you alive!");
+				System.out.println("This is gonna hurt real bad!");
 			}
 			if(Items.turns <= 0){
-				System.out.println("Trump got bored so he went to play golf");
-				
+				System.out.println("The ghost got bored so he started watching Nexflix");
+				System.out.println("Be more fun next time");
 				// win game here
 				CaveRoom.event3done = true;
 				CaveExplorer.inventory.updateMap();
