@@ -103,6 +103,7 @@ public class SharonInput extends EventAlamAndSharon{
 				}else{
 					System.out.println("Game Over. You've run into the ghost.");
 					System.out.println("'I will eat you alive' as teh ghost swallow you whole");
+					System.out.println("-----You Died.-----");
 					System.exit(1);
 				}
 			}
