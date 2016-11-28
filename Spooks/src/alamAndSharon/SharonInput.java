@@ -103,13 +103,7 @@ public class SharonInput extends EventAlamAndSharon{
 				}else{
 					System.out.println("Game Over. You've run into the ghost.");
 					System.out.println("'I will eat you alive' as teh ghost swallow you whole");
-					System.out.println("But then you realized that you can go through the, and walked away");
-					
-					//loose game here
-					CaveExplorer.inventory.setMap(true);
-
-					CaveExplorer.inventory.updateMap();
-					caveExplorer.CaveExplorer.startExploring(true);
+					System.exit(1);
 				}
 			}
 			Items.turns --;
