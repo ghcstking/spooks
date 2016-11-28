@@ -26,7 +26,7 @@ public class EventAlamAndSharon implements Event {
 	public void play() {
 		
 		readSequence(Begin);
-		CaveExplorer.print("Ghost are hunting you down surive for 10 rounds");
+		CaveExplorer.print("Ghost are hunting you down surive for 20 rounds");
 		CaveExplorer.print(" - - - Press enter - - - ");
 		CaveExplorer.in.nextLine();
 		CaveExplorer.print("SURIVE!");
