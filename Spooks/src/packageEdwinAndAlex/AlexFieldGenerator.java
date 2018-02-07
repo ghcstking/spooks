@@ -14,37 +14,36 @@ public class AlexFieldGenerator {
 		printBoard();
 		CaveExplorer.print("Turns left: "+turnsLeft);
 		while(turnsLeft>0){
-			CaveExplorer.print("Enter row coordinate.");
-			String rowCord = CaveExplorer.in.nextLine();
-			CaveExplorer.print("Enter column coordinate.");
-			String colCord = CaveExplorer.in.nextLine();
-			if(EdwinWinConditions.cheatCodeEntered(rowCord)||EdwinWinConditions.cheatCodeEntered(colCord)){
+			CaveExplorer.print("Enter coordinates in (a,b) format.");
+			String coord = CaveExplorer.in.nextLine();
+			if(EdwinWinConditions.cheatCodeEntered(coord)){
+				gameWon = true;
+				break;
+			}
+			while(coord.length()!=5){
+				CaveExplorer.print("Are you braindead? There's no lightbulb at that point.");
+				CaveExplorer.print("Enter coordinates in (a,b) format.");
+				coord = CaveExplorer.in.nextLine();
+			}
+			while(!EdwinWinConditions.isValidPoint(coord.substring(1, 2),coord.substring(3, 4))){
+				CaveExplorer.print("Are you braindead? There's no lightbulb at that point.");
+				CaveExplorer.print("Enter coordinates in (a,b) format.");
+				coord = CaveExplorer.in.nextLine();
+			}
+			changeLights(Integer.parseInt(coord.substring(1, 2)),Integer.parseInt(coord.substring(3, 4)));
+			if(EdwinWinConditions.isCleared(board)){
 				gameWon = true;
 				break;
 			}
 			else{
-				while(!EdwinWinConditions.isValidPoint(rowCord,colCord)){
-					CaveExplorer.print("Are you braindead? There's no lightbulb at that point.");
-					CaveExplorer.print("Enter row coordinate.");
-					rowCord = CaveExplorer.in.nextLine();
-					CaveExplorer.print("Enter column coordinate.");
-					colCord = CaveExplorer.in.nextLine();
-				}
-				changeLights(Integer.parseInt(rowCord),Integer.parseInt(colCord));
-				if(EdwinWinConditions.isCleared(board)){
-					gameWon = true;
-					break;
-				}
-				else{
-					turnsLeft--;
-					printBoard();
-					CaveExplorer.print("Turns left: "+turnsLeft);
-				}
+				turnsLeft--;
+				printBoard();
+				CaveExplorer.print("Turns left: "+turnsLeft);
 			}
-
 		}
 		return gameWon;
 	}
+
 
 	private static void generateBoard(){
 		int lightsToTurnOff = 12;
@@ -121,7 +120,6 @@ public class AlexFieldGenerator {
 			board[r][c-1] = !board[r][c-1];
 
 		}
-
 	}
 	private static void printBoard(){
 		String boardImage = " ";
