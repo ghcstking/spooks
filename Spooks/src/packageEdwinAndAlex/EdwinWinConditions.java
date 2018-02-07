@@ -48,6 +48,22 @@ public class EdwinWinConditions {
 		}
 		return (validRow&&validCol);
 	}
+	
+	public static void changeLights(int r, int c) {
+		AlexFieldGenerator.board[r][c] = !AlexFieldGenerator.board[r][c];
+		if(c-1>=0){
+			AlexFieldGenerator.board[r][c-1]=!AlexFieldGenerator.board[r][c-1];
+		}
+		if(c+1<AlexFieldGenerator.board[r].length){
+			AlexFieldGenerator.board[r][c+1]=!AlexFieldGenerator.board[r][c+1];
+		}	
+		if(r-1>=0){
+			AlexFieldGenerator.board[r-1][c]=!AlexFieldGenerator.board[r-1][c];
+		}
+		if(r+1<AlexFieldGenerator.board.length){
+			AlexFieldGenerator.board[r+1][c]=!AlexFieldGenerator.board[r+1][c];
+		}
+	}
 
 	public static boolean cheatCodeEntered(String input){
 		return(input.equals(AlexFieldGenerator.cheatCode));
